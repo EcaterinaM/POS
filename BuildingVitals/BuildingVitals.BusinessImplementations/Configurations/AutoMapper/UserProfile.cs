@@ -1,4 +1,5 @@
 ﻿using AutoMapper;
+using BuildingVitals.BusinessContracts.Models;
 using BuildingVitals.BusinessContracts.Models.Identity;
 using BuildingVitals.DataAccessContracts.Entities.Identity;
 
@@ -10,6 +11,7 @@ namespace BuildingVitals.BusinessImplementations.Configurations.AutoMapper
         {
             CreateMap<User, UserModel>();
             CreateMap<UserModel, User>();
+            CreateMap<AddUserModel, User>();
         }
     }
 }
