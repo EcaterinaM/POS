@@ -1,0 +1,55 @@
+@import "mixins";
+@import "pallete";
+
+.tab-header-container {
+  @include flex($justify:center);
+  width: 100%;
+  height: 58px;
+  min-height: 58px;
+  background-color: $neutral-3;
+  box-shadow: 0 3px 14px rgba(0, 0, 0, 0.14);
+  position: relative;
+  z-index: 999;
+
+  .icon-button {
+    @include flex(row, center, center);
+    padding: 0 32px;
+    border-right: 1px solid $neutral-6;
+    cursor: pointer;
+
+    i {
+      color: $neutral-1;
+      padding: 4px;
+      background-color: #f2f4f6;
+      border-radius: 50%;
+    }
+  }
+}
+
+.tab-header {
+  @include flex;
+  width: 100%;
+  list-style-type: none;
+  margin-bottom: 0;
+
+  li {
+    height: 100%;
+    @include flex(row,center,center);
+    padding:20px 20px 18px 20px;
+    cursor: pointer;
+    color: $neutral-1;
+    border-bottom: 2px solid transparent;
+
+    &.active {
+      color: $primary-1;
+     // font-weight: 600;
+      border-bottom-color: $primary-1;
+    }
+  }
+}
+
+.tab-content {
+  //padding: 40px;
+  //padding-bottom: 0;
+  overflow-y: auto;
+}

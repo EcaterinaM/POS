@@ -1,0 +1,73 @@
+@import './src/assets/styles/pallete.scss';
+@import './src/assets/styles/buttons.scss';
+
+.margin {
+    margin:0 10px;
+    &:first-of-type{
+        margin-left:0;
+    }
+}
+
+.small-input{
+    width: 200px;
+    margin-right: 20px;
+    text-align: center;
+}
+
+.content-header {
+    margin-top:20px;
+}
+
+.content-body {
+    @extend .content-header;
+}
+
+.content-table {
+    @extend .content-header;
+    margin-right: 40px;
+}
+
+.mat-elevation-z8{
+    max-height: calc(100vh - 250px);
+    overflow: auto;
+}
+
+.content-footer{
+    float: right;
+    padding-right: 40px;
+    padding-top: 20px;
+}
+
+table {
+    width: 100%;
+  }
+  
+  .mat-form-field {
+    font-size: 14px;
+    width: 100%;
+  }
+  
+  td, th {
+    width: 25%;
+  }
+
+   
+
+@media (max-width: 768px) {
+    .content-footer{
+        padding-right: 0px;
+       
+    }
+}
+
+@media (max-width: 768px) {
+    .content-table {
+        margin-right: 0px;
+        }
+
+    }
+
+
+.example-form {
+    width: 40%;
+  }

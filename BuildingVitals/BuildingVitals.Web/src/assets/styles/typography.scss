@@ -1,0 +1,92 @@
+﻿$roboto-bold: 'roboto-bold', sans-serif;
+$roboto-light: 'roboto-light', sans-serif;
+$roboto-medium: 'roboto-medium', sans-serif;
+$roboto-regular: 'roboto-regular', sans-serif;
+$roboto-thin: 'roboto-thin', sans-serif;
+
+
+
+//Headings for desktop
+h1 {
+  font-family: $roboto-light;
+  font-size: 38px;
+  line-height: 46px;
+
+  @media (max-width:1024px) {
+    font-size: 28px;
+    line-height: 36px;
+  }
+}
+
+h2 {
+  font-family: $roboto-light;
+  font-size: 28px;
+  line-height: 32px;
+
+  @media (max-width:1024px) {
+    font-family: $roboto-light;
+    font-size: 22px;
+    line-height: 28px;
+  }
+}
+
+h3 {
+  font-family: $roboto-regular;
+  font-size: 20px;
+  line-height: 24px;
+
+  @media (max-width:1024px) {
+    font-size: 18px;
+    line-height: 24px;
+  }
+}
+
+h4 {
+  font-family: $roboto-medium;
+  font-size: 18px;
+  line-height: 24px;
+}
+
+h5 {
+  font-family: $roboto-regular;
+  font-size: 16px;
+  line-height: 16px;
+}
+
+.primary-buttons-font {
+  font-family: $roboto-bold;
+  font-size: 18px;
+  line-height: 18px;
+}
+
+.small-buttons-font {
+  font-family: $roboto-bold;
+  font-size: 16px;
+  line-height: 16px;
+}
+//also used for primary navigation and table headers
+.form-label-font {
+  font-family: $roboto-medium;
+  font-size: 16px;
+  line-height: 16px;
+}
+//also used for mobile table text
+.help-font {
+  font-family: $roboto-regular;
+  font-size: 14px;
+  line-height: 18px;
+}
+
+//Headings for mobile
+.prinary-navigation {
+  font-family: $roboto-light;
+  font-size: 28px;
+  line-height: 30px;
+  font-weight: 300;
+}
+
+.secondary-navigation {
+  font-family: $roboto-light;
+  line-height: 24px;
+  font-size: 28px;
+}
