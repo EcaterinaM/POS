@@ -1,0 +1,28 @@
+.wrap-container {
+  display: flex;
+  flex-wrap: wrap;
+  align-content: flex-start;
+  padding: 0 34px;
+  height: calc(100% - 158px);
+  height: calc(var(--vh, 1vh) * 100 - 158px);
+  overflow-y: auto;
+}
+
+.wrap-container app-card {
+  flex-basis: 334px;
+  margin-right: 20px;
+  margin-bottom: 20px;
+}
+
+@supports (display: grid) {
+  .wrap-container {
+    display: grid;
+    grid-gap: 20px;
+    grid-template-columns: repeat(auto-fill, minmax(300px, 2fr));
+  }
+
+    .wrap-container app-card {
+      margin-bottom: 0;
+      margin-right: 0;
+    }
+}
