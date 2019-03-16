@@ -1,4 +1,5 @@
 ﻿using System.Threading.Tasks;
+using BuildingVitals.BusinessContracts.Models;
 using BuildingVitals.BusinessContracts.Models.Identity;
 using Microsoft.AspNetCore.Identity;
 
@@ -51,6 +52,19 @@ namespace BuildingVitals.BusinessContracts.Services.Identity
         /// <returns>The identity result.</returns>
         Task<IdentityResult> RemoveRefreshToken(TokensAuthenticationModel tokensAuthenticationModel,
             string userName);
+
+        /// <summary>
+        /// Adds the admin.
+        /// </summary>
+        /// <returns></returns>
+        Task AddAdmin(AddUserModel userModel);
+
+        /// <summary>
+        /// Adds the tenant.
+        /// </summary>
+        /// <param name="userModel">The user model.</param>
+        /// <returns></returns>
+        Task AddTenant(AddUserModel userModel);
 
     }
 }

@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Threading.Tasks;
 using AutoMapper;
+using BuildingVitals.BusinessContracts.Models;
 using BuildingVitals.BusinessContracts.Models.Identity;
 using BuildingVitals.BusinessContracts.Services.Identity;
 using BuildingVitals.Common.Constants;
@@ -52,6 +53,16 @@ namespace BuildingVitals.BusinessImplementations.Services.Identity
             var user = await GetUserByValidToken(tokensAuthenticationModel, userName);
             return await _userManager.RemoveAuthenticationTokenAsync(user, tokensAuthenticationModel.LoginProvider,
                 UserIdentityConstants.TokenName);
+        }
+
+        public async Task AddAdmin(AddUserModel userModel)
+        {
+            await _userManager.AddAdmin(_serviceMapper, userModel);
+        }
+
+        public async Task AddTenant(AddUserModel userModel)
+        {
+            await _userManager.AddAdmin(_serviceMapper, userModel);
         }
 
         private async Task<User> GetUserByValidToken(TokensAuthenticationModel tokensAuthenticationModel,
