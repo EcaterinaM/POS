@@ -62,7 +62,7 @@ namespace BuildingVitals.BusinessImplementations.Services.Identity
 
         public async Task AddTenant(AddUserModel userModel)
         {
-            await _userManager.AddAdmin(_serviceMapper, userModel);
+            await _userManager.AddTenant(_serviceMapper, userModel);
         }
 
         private async Task<User> GetUserByValidToken(TokensAuthenticationModel tokensAuthenticationModel,

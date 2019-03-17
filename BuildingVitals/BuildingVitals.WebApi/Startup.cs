@@ -66,6 +66,8 @@ namespace BuildingVitals.WebApi
             {
                 app.UseHsts();
             }
+            app.Use(async (ctx, next) => { await next(); if (ctx.Response.StatusCode == 204) { ctx.Response.ContentLength = 0; } });
+
 
             app.UseCors(options => options
                     .AllowAnyOrigin()

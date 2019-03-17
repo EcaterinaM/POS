@@ -1,0 +1,39 @@
+@import '../../../../assets/styles/pallete.scss';
+
+.main-loader {
+  -webkit-animation: spin 1s linear infinite;
+  animation: spin 1s linear infinite;
+  border: 3px solid $neutral-3;
+  border-top: 3px solid $alert-1;
+  border-radius: 50%;
+  height: 75px;
+  width: 75px;
+  z-index: 1000;
+}
+
+.overlay-loader {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100vw;
+  height: 100vh;
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 998;
+  background-color: $neutral-1;
+}
+
+@-webkit-keyframes spin {
+  to {
+    -webkit-transform: rotate(360deg);
+    transform: rotate(360deg);
+  }
+}
+
+@keyframes spin {
+  to {
+    -webkit-transform: rotate(360deg);
+    transform: rotate(360deg);
+  }
+}
