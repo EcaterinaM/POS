@@ -1,0 +1,25 @@
+:host {
+  padding: 0 20px;
+  height: 70px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.logo > img {
+  height: 42px;
+}
+
+.menu {
+  display: flex;
+
+  &-item-icon {
+    cursor: pointer;
+    margin-right: 10px;
+  }
+
+  img {
+    height: 24px;
+    opacity: 0.6;
+  }
+}

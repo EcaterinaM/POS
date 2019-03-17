@@ -1,1 +1,5 @@
+<app-header *ngIf="isUserLoggedIn"
+            (clickLogout)="onClickLogout()"></app-header>
 <router-outlet></router-outlet>
+<app-loader></app-loader>
+

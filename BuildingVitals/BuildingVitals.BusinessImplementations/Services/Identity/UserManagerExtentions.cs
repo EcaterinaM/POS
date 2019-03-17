@@ -13,8 +13,6 @@ namespace BuildingVitals.BusinessImplementations.Services.Identity
     {
         public static async Task AddAdmin(this UserManager<User> userManager, IMapper serviceMapper, AddUserModel userModel)
         {
-            if (userManager.Users.Any()) return;
-
             var user = serviceMapper.Map<User>(userModel);
             user.Id = Guid.NewGuid();
 
@@ -24,8 +22,6 @@ namespace BuildingVitals.BusinessImplementations.Services.Identity
 
         public static async Task AddTenant(this UserManager<User> userManager, IMapper serviceMapper, AddUserModel userModel)
         {
-            if (userManager.Users.Any()) return;
-
             var user = serviceMapper.Map<User>(userModel);
             user.Id = Guid.NewGuid();
 
