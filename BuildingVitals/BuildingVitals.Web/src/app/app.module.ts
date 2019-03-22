@@ -19,11 +19,13 @@ import { SharedModule } from './shared';
 import { AppComponent } from './app.component';
 
 import { LoginComponent } from './login';
+import { RegisterComponent } from './register/register.component';
 
 @NgModule({
   declarations: [
     AppComponent,
-    LoginComponent
+    LoginComponent,
+    RegisterComponent
   ],
   imports: [
     BrowserModule,

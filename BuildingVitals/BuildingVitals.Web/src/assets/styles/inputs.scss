@@ -10,11 +10,11 @@
   -webkit-appearance: none;
   border: 1px solid #e9e9e9;
   padding-left: 17px;
-  color: $neutral-4;
+  // color: $neutral-4;
 
   &:focus {
     outline: none;
-    background-color: $primary-4;
+    // background-color: $primary-4;
     border-color: $primary-3;
     color: $neutral-1;
   }

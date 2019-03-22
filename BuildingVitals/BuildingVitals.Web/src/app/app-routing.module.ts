@@ -1,6 +1,7 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 import { LoginComponent } from './login';
+import { RegisterComponent } from './register';
 
 import { AdminNotAuthenticateGuard, TenantNotAuthenticateGuard } from './shared';
 
@@ -8,6 +9,12 @@ const routes: Routes = [
   {
     path: 'login',
     component: LoginComponent,
+    canActivate: [ AdminNotAuthenticateGuard, TenantNotAuthenticateGuard ],
+    pathMatch: 'full'
+  },
+  {
+    path: 'register',
+    component: RegisterComponent,
     canActivate: [ AdminNotAuthenticateGuard, TenantNotAuthenticateGuard ],
     pathMatch: 'full'
   },
