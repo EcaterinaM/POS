@@ -1,12 +1,10 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
-
-namespace BuildingVitals.BusinessContracts.Models
+﻿namespace BuildingVitals.BusinessContracts.Models
 {
     public class AddUserModel
     {
         public string Name { get; set; }
+
+        public string Surname { get; set; }
 
         public string UserName { get; set; }
 
