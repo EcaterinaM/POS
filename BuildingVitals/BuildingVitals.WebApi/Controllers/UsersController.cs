@@ -1,7 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
+﻿using System.Threading.Tasks;
 using BuildingVitals.BusinessContracts.Models;
 using BuildingVitals.BusinessContracts.Services.Identity;
 using Microsoft.AspNetCore.Mvc;
@@ -19,7 +16,7 @@ namespace BuildingVitals.WebApi.Controllers
             _userService = userService;
         }
 
-        [HttpPost("addAdmin")]
+        [HttpPost("register")]
         public async Task<IActionResult> AddAdmin(AddUserModel userModel)
         {
             await _userService.AddAdmin(userModel);

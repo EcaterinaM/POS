@@ -7,7 +7,8 @@ import { AuthenticationHelper, ServiceHelper } from './helpers';
 import {
   AuthenticationService, JwtOptionsService, LoaderService, LocalStorageService,
   AdminNotAuthenticateGuard, TenantNotAuthenticateGuard,
-  BaseService
+  BaseService,
+  RegisterService
 } from './services';
 
 @NgModule({
@@ -25,6 +26,8 @@ import {
   providers: [
     AuthenticationHelper,
     ServiceHelper,
+
+    RegisterService,
 
     BaseService,
 

@@ -1,3 +1,105 @@
-<p>
-  register works!
-</p>
+<section class="register-container"
+         [style.background-image]="transformImage('../../assets/background.jpg')">
+
+  <div class="register-panel">
+    <form *ngIf="registerForm"
+          autocomplete="off"
+          role="form"
+          [formGroup]="registerForm">
+
+      <input class="simple-input"
+             placeholder="Username"
+             formControlName="username"
+             type="text">
+      <span *ngIf="registerForm.get('username').hasError('required') && (registerForm.controls.username.dirty || isFormSubmitted)"
+            class="error-message">
+        Username field is required!
+      </span>
+      <span *ngIf="registerForm.get('username').hasError('maxlength') && (registerForm.controls.username.dirty || isFormSubmitted)"
+            class="error-message">
+        You can enter only 50 characters!
+      </span>
+
+      <input class="simple-input"
+             placeholder="Password"
+             formControlName="password"
+             type="password">
+      <span *ngIf="registerForm.get('password').hasError('required') && (registerForm.controls.password.dirty || isFormSubmitted)"
+            class="error-message">
+        Password field is required!
+      </span>
+      <span *ngIf="registerForm.get('password').hasError('password') && (registerForm.controls.password.dirty || isFormSubmitted)"
+            class="error-message">
+        You can enter only 50 characters!
+      </span>
+
+
+      <input class="simple-input"
+             placeholder="Re-type password"
+             formControlName="confirmPassword"
+             type="password">
+      <span *ngIf="registerForm.get('confirmPassword').hasError('required') && (registerForm.controls.confirmPassword.dirty || isFormSubmitted)"
+            class="error-message">
+        Confirm password field is required!
+      </span>
+
+
+      <input class="simple-input"
+             placeholder="Name"
+             formControlName="name"
+             type="text">
+      <span *ngIf="registerForm.get('name').hasError('required') && (registerForm.controls.name.dirty || isFormSubmitted)"
+            class="error-message">
+        Name field is required!
+      </span>
+      <span *ngIf="registerForm.get('name').hasError('required') && (registerForm.controls.name.dirty || isFormSubmitted)"
+            class="error-message">
+        You can enter only 50 characters!
+      </span>
+
+      <input class="simple-input"
+             placeholder="Surname"
+             formControlName="surname"
+             type="text">
+      <span *ngIf="registerForm.get('surname').hasError('required') && (registerForm.controls.surname.dirty || isFormSubmitted)"
+            class="error-message">
+        Surname field is required!
+      </span>
+      <span *ngIf="registerForm.get('surname').hasError('required') && (registerForm.controls.surname.dirty || isFormSubmitted)"
+            class="error-message">
+        You can enter only 50 characters!
+      </span>
+
+      <input class="simple-input"
+             placeholder="Email"
+             formControlName="email"
+             type="text">
+      <span *ngIf="registerForm.get('email').hasError('required') && (registerForm.controls.email.dirty || isFormSubmitted)"
+            class="error-message">
+        Email field is required!
+      </span>
+      <span *ngIf="registerForm.get('email').hasError('pattern') && (registerForm.controls.email.dirty || isFormSubmitted)"
+            class="error-message">
+        Invalid email.
+      </span>
+
+      <input class="simple-input"
+             placeholder="Phone number"
+             formControlName="phoneNumber"
+             type="text">
+      <span *ngIf="registerForm.get('phoneNumber').hasError('required') && (registerForm.controls.phoneNumber.dirty || isFormSubmitted)"
+            class="error-message">
+        Phone number field is required!
+      </span>
+      <span *ngIf="registerForm.get('phoneNumber').hasError('pattern') && (registerForm.controls.phoneNumber.dirty || isFormSubmitted)"
+            class="error-message">
+        Invalid phone number.
+      </span>
+
+    </form>
+    <button class="primary-button full-width"
+            (click)="submitForm()">
+      <h6>Register</h6>
+    </button>
+  </div>
+</section>

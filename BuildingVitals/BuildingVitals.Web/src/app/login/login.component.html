@@ -1,35 +1,23 @@
-<section class="login-container" [style.background-image]="transformImage('../../assets/background.jpg')">
+<section class="login-container"
+         [style.background-image]="transformImage('../../assets/background.jpg')">
   <div class="login-panel">
     <div *ngIf="invalidCredentials">
       Invalid credentials!
     </div>
     <img src="../../assets/images/Group 3.png">
     <form [formGroup]="loginForm">
-      <input class="simple-input" placeholder="Username" formControlName="username" />
-      <input class="simple-input" type="password" formControlName="password" placeholder="Password" />
-      <button class="primary-button full-width" (click)="submitForm()">
+      <input class="simple-input"
+             placeholder="Username"
+             formControlName="username" />
+      <input class="simple-input"
+             type="password"
+             formControlName="password"
+             placeholder="Password" />
+      <button class="primary-button full-width"
+              (click)="submitForm()">
         <h6>Login</h6>
       </button>
     </form>
-
-    <form [formGroup]="registerForm">
-      <input class="simple-input"
-             placeholder="Username"
-             formControlName="username">
-      <input class="simple-input"
-             placeholder="Password"
-             formControlName="password">
-      <input class="simple-input"
-             placeholder="Re-type password"
-             formControlName="retypePassword">
-      <input class="simple-input"
-             placeholder="Email"
-             formControlName="email">
-      <input class="simple-input"
-             placeholder="Phone number"
-             formControlName="phoneNumber">
-    </form>
-    <a>Register here as an building administrator</a>
-
+    <a [routerLink]="['/register']">Register here as an building administrator</a>
   </div>
 </section>

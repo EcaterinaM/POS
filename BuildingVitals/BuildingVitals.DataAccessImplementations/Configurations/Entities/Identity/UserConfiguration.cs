@@ -9,6 +9,7 @@ namespace BuildingVitals.DataAccessImplementations.Configurations.Entities.Ident
         public void Configure(EntityTypeBuilder<User> builder)
         {
             builder.Property(u => u.Name).IsRequired().HasMaxLength(128).IsUnicode(false);
+            builder.Property(u => u.Surname).IsRequired().HasMaxLength(128).IsUnicode(false);
             builder.Property(u => u.UserName).IsRequired().HasMaxLength(128).IsUnicode(false);
             builder.Property(u => u.NormalizedUserName).HasMaxLength(128).IsUnicode(false);
             builder.Property(u => u.Email).IsRequired().HasMaxLength(128).IsUnicode(false);
