@@ -27,6 +27,11 @@ export class RegisterComponent implements OnInit {
 
   submitForm(): void {
     this.isFormSubmitted = true;
+
+    if (this.registerForm.get('password').value != this.registerForm.get('confirmPassword').value) {
+      this.registerForm.get('confirmPassword').setErrors({ 'match': true });
+    }
+
     if (this.registerForm.valid) {
       this.registerModel = this.registerForm.value;
 
@@ -55,5 +60,14 @@ export class RegisterComponent implements OnInit {
       confirmPassword: [this.registerModel.confirmPassword, [Validators.required,Validators.maxLength(128)]],
       phoneNumber: [this.registerModel.phoneNumber, [Validators.required, Validators.pattern(RegexConstants.phoneNumber)]]
     });
+  }
+
+
+  public hasControlErorr(controlName: string, error: string): boolean {
+    if (this.registerForm.get(controlName).hasError(error)
+      && (this.registerForm.controls[controlName].dirty || this.isFormSubmitted)) {
+      return true;
+    }
+    return false;
   }
 }

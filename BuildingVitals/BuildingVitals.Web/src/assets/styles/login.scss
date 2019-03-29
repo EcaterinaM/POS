@@ -1,174 +1,27 @@
 @import 'mixins.scss';
 @import 'buttons.scss';
 
-.login {
-  width: 100vw;
-  height: 100vh;
-  @include flex(row,center,center);
-  overflow: hidden;
-  background: linear-gradient( rgba(0, 87, 138, 0.6), rgba(0, 87, 138, 0.6) ), url("../../../assets/images/login-background.jpg");
-  background-repeat: no-repeat;
-  background-size: cover;
-  background-position: center;
-}
-
 .login-container {
-  width: 34%;
-  max-height: 100vh;
-  overflow-x: hidden;
-  overflow-y: auto;
-  background-color: $neutral-3;
+  @include size(100vw, 100vh);
+  @include flex(column,center,center);
+  background-size: cover;
 
-
-  .login-header {
-    padding-bottom: 25px;
-    background: url("../../../assets/images/palms.png");
-    background-repeat: no-repeat;
-    background-size: 100%;
-
-    .logo-container {
-      @include flex($justify: center, $align:center);
-      padding-top: 55px;
-      padding-bottom: 25px;
-    }
-
-    .login-title {
-      background-color: transparent;
-      padding: 0 55px;
-    }
+  .login-panel {
+    @include flex(column,center,center);
+    padding: 80px 40px 40px 40px;
+    border-radius: 6px;
+    background-color: rgba(255,255,255,0.8);
   }
 
-  .login-form {
-    @include flex(column);
-    background-color: rgba(241, 245, 246, 1);
-    padding: 55px;
-    padding-top: 25px;
-
-    a {
-      color: $primary-5;
-      cursor: pointer;
-      text-decoration: underline;
-      font-weight: normal;
-      font-size: 18px;
-      margin-top: 20px;
-      align-self: flex-end;
-    }
-  }
-
-  .login-logo {
-    width: 437px;
-    height: 120px;
-    padding: 0;
-    background-image: url("../../../assets/images/logo_FB.png");
-    background-repeat: no-repeat;
-    background-size: 360px 65px;
-    background-position-x: center;
-    background-position-y: 20px;
-  }
-}
-
-.info-container {
-  background-color: $primary-1;
-  color: $neutral-3;
-  padding: 40px 55px;
-
-  h5 {
-    font-size: 16px;
-    margin: 28px 0;
-  }
-
-  h4, a {
-    font-size: 18px;
+  img {
+    width: 160px;
+    margin-bottom: 20px;
+    align-self: center;
   }
 
   a {
-    text-decoration: underline;
+    margin-top: 20px;
+    align-self: center;
     cursor: pointer;
-  }
-}
-
-.login-button {
-  height: 42px;
-  width: 100%;
-  background-color: $primary-1;
-  color: $neutral-3;
-  cursor: pointer;
-  border: none;
-  outline: none;
-  font-size: 18px;
-  background-position: center;
-  transition: background 0.8s;
-  margin-top: 20px;
-
-  &:hover {
-    background: #47a7f5 radial-gradient(circle, transparent 1%, $primary-1 1%) center/15000%;
-  }
-
-  &:active {
-    background-color: #1B73A6;
-    background-size: 100%;
-    transition: background 0s;
-  }
-}
-
-
-.login-title {
-  display: flex;
-
-  h4 {
-    font-family: "roboto-bold", sans-serif;
-    font-size: 24px;
-    line-height: 25px;
-    font-weight: bold;
-    color: rgba(0, 87, 138, 1);
-
-    &:nth-child(2) {
-      color: $primary-5;
-      padding-left: 7px;
-    }
-  }
-}
-
-.captcha-message {
-  margin-top: 8px;
-
-  button {
-    margin-left: 10px;
-    outline:none;
-  }
-  h6{
-    font-size:16px;
-    margin-bottom:8px;
-  }
-}
-
-.remember-checkbox {
-  color: $primary-5;
-  font-size: 18px;
-  padding-top: 20px;
-  text-decoration: none;
-}
-
-@media (max-width: 1396px) {
-  .login-container {
-    width: 45%;
-    margin-bottom: 0;
-  }
-}
-
-@media (max-width: 1024px) {
-  .login-container {
-    width: 70%;
-    margin-bottom: 0;
-  }
-}
-
-@media (max-width: 700px) {
-  .login-container {
-    width: 90%;
-  }
-
-  .login-logo {
-    background-size: contain !important;
   }
 }

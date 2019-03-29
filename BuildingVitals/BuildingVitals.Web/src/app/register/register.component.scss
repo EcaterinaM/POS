@@ -2,22 +2,8 @@
 @import "../../assets/styles/mixins";
 @import "../../assets/styles/inputs";
 @import "../../assets/styles/buttons";
+@import "../../assets/styles/login";
 
-
-.register-container {
-  @include size(100vw, 100vh);
-  @include flex(column,center,center);
-  background-size: cover;
-
-  .register-panel {
-    @include flex(column,center,center);
-    width: 60%;
-    padding: 80px 40px 40px 40px;
-    border-radius: 6px;
-    background-color: rgba(255,255,255,0.7);
-  }
-
-  .simple-input {
-    margin-bottom: 20px;
-  }
+.login-panel{
+  width: 500px;
 }
