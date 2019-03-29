@@ -2,33 +2,8 @@
 @import "../../assets/styles/mixins";
 @import "../../assets/styles/inputs";
 @import "../../assets/styles/buttons";
+@import "../../assets/styles/login";
 
-
-.login-container {
-  @include size(100vw, 100vh);
-  @include flex(column,center,center);
-  background-size: cover;
-
-  .login-panel {
-    @include flex(column,center,center);
-    padding: 80px 40px 40px 40px;
-    border-radius: 6px;
-    background-color: rgba(255,255,255,0.7);
-  }
-
-  .simple-input {
-    margin-bottom: 20px;
-  }
-
-  img {
-    width: 160px;
-    margin-bottom: 20px;
-    align-self: center;
-  }
-
-  a {
-    margin-top: 20px;
-    align-self: center;
-    cursor: pointer;
-  }
+.simple-input{
+  margin-bottom: 20px;
 }

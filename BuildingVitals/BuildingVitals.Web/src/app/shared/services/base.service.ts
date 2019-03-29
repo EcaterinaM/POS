@@ -12,8 +12,8 @@ export class BaseService {
   baseServiceUrl: string;
   baseRoute: string;
 
-  constructor(private httpClient: HttpClient,
-    private serviceHelper: ServiceHelper) {
+  constructor(public httpClient: HttpClient,
+    public serviceHelper: ServiceHelper) {
     this.baseServiceUrl = environment.serviceUrl;
   }
 
