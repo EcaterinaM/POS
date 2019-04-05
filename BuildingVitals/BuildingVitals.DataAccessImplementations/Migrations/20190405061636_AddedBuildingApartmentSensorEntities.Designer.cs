@@ -10,7 +10,7 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace BuildingVitals.DataAccessImplementations.Migrations
 {
     [DbContext(typeof(AppDbContext))]
-    [Migration("20190405054616_AddedBuildingApartmentSensorEntities")]
+    [Migration("20190405061636_AddedBuildingApartmentSensorEntities")]
     partial class AddedBuildingApartmentSensorEntities
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -40,7 +40,27 @@ namespace BuildingVitals.DataAccessImplementations.Migrations
 
                     b.HasIndex("BuildingId");
 
+                    b.HasIndex("OwnerId");
+
                     b.ToTable("Apartment");
+                });
+
+            modelBuilder.Entity("BuildingVitals.DataAccessContracts.Entities.ApartmentSensor", b =>
+                {
+                    b.Property<Guid>("Id")
+                        .ValueGeneratedOnAdd();
+
+                    b.Property<Guid>("ApartmentId");
+
+                    b.Property<Guid>("SensorId");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("ApartmentId");
+
+                    b.HasIndex("SensorId");
+
+                    b.ToTable("ApartmentSensor");
                 });
 
             modelBuilder.Entity("BuildingVitals.DataAccessContracts.Entities.Building", b =>
@@ -57,6 +77,8 @@ namespace BuildingVitals.DataAccessImplementations.Migrations
                     b.Property<Guid>("OwnerId");
 
                     b.HasKey("Id");
+
+                    b.HasIndex("OwnerId");
 
                     b.ToTable("Building");
                 });
@@ -259,6 +281,32 @@ namespace BuildingVitals.DataAccessImplementations.Migrations
                     b.HasOne("BuildingVitals.DataAccessContracts.Entities.Building", "Building")
                         .WithMany("Apartments")
                         .HasForeignKey("BuildingId")
+                        .OnDelete(DeleteBehavior.Restrict);
+
+                    b.HasOne("BuildingVitals.DataAccessContracts.Entities.Identity.User", "Owner")
+                        .WithMany()
+                        .HasForeignKey("OwnerId")
+                        .OnDelete(DeleteBehavior.Cascade);
+                });
+
+            modelBuilder.Entity("BuildingVitals.DataAccessContracts.Entities.ApartmentSensor", b =>
+                {
+                    b.HasOne("BuildingVitals.DataAccessContracts.Entities.Apartment", "Apartment")
+                        .WithMany()
+                        .HasForeignKey("ApartmentId")
+                        .OnDelete(DeleteBehavior.Cascade);
+
+                    b.HasOne("BuildingVitals.DataAccessContracts.Entities.Sensor", "Sensor")
+                        .WithMany()
+                        .HasForeignKey("SensorId")
+                        .OnDelete(DeleteBehavior.Cascade);
+                });
+
+            modelBuilder.Entity("BuildingVitals.DataAccessContracts.Entities.Building", b =>
+                {
+                    b.HasOne("BuildingVitals.DataAccessContracts.Entities.Identity.User", "Owner")
+                        .WithMany()
+                        .HasForeignKey("OwnerId")
                         .OnDelete(DeleteBehavior.Cascade);
                 });
 

@@ -14,7 +14,8 @@ namespace BuildingVitals.DataAccessImplementations.Configurations
 
             builder.HasOne(a => a.Building)
                 .WithMany(a => a.Apartments)
-                .HasForeignKey(b => b.BuildingId);
+                .HasForeignKey(b => b.BuildingId)
+                .OnDelete(DeleteBehavior.Restrict);
         }
     }
 }

@@ -1,5 +1,6 @@
 ﻿using System;
 using BuildingVitals.DataAccessContracts.Entities.Base;
+using BuildingVitals.DataAccessContracts.Entities.Identity;
 
 namespace BuildingVitals.DataAccessContracts.Entities
 {
@@ -14,5 +15,8 @@ namespace BuildingVitals.DataAccessContracts.Entities
         public Guid BuildingId { get; set; }
 
         public Building Building { get; set; }
+
+        public User Owner { get; set; }
     }
+
 }

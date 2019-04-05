@@ -14,7 +14,8 @@ namespace BuildingVitals.DataAccessImplementations.Configurations
 
 
             builder.HasMany(b => b.Apartments)
-                .WithOne(a => a.Building);
+                .WithOne(a => a.Building)
+                .OnDelete(DeleteBehavior.Restrict); ;
 
         }
     }

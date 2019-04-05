@@ -8,5 +8,9 @@ namespace BuildingVitals.DataAccessContracts.Entities
         public Guid SensorId { get; set; }
 
         public Guid ApartmentId { get; set; }
+
+        public Sensor Sensor { get; set; }
+
+        public Apartment Apartment { get; set; }
     }
 }

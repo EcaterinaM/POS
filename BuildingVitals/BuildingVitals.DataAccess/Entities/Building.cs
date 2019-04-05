@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using BuildingVitals.DataAccessContracts.Entities.Base;
+using BuildingVitals.DataAccessContracts.Entities.Identity;
 
 namespace BuildingVitals.DataAccessContracts.Entities
 {
@@ -13,5 +14,7 @@ namespace BuildingVitals.DataAccessContracts.Entities
         public string Address { get; set; }
 
         public List<Apartment> Apartments { get; set; }
+
+        public User Owner { get; set; }
     }
 }

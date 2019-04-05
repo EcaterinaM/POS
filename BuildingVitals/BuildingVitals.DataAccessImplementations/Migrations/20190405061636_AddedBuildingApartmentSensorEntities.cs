@@ -20,6 +20,13 @@ namespace BuildingVitals.DataAccessImplementations.Migrations
                 constraints: table =>
                 {
                     table.PrimaryKey("PK_Building", x => x.Id);
+                    table.ForeignKey(
+                        name: "FK_Building_User_OwnerId",
+                        column: x => x.OwnerId,
+                        principalSchema: "BuildingVitals",
+                        principalTable: "User",
+                        principalColumn: "Id",
+                        onDelete: ReferentialAction.Cascade);
                 });
 
             migrationBuilder.CreateTable(
@@ -57,6 +64,41 @@ namespace BuildingVitals.DataAccessImplementations.Migrations
                         principalSchema: "BuildingVitals",
                         principalTable: "Building",
                         principalColumn: "Id",
+                        onDelete: ReferentialAction.Restrict);
+                    table.ForeignKey(
+                        name: "FK_Apartment_User_OwnerId",
+                        column: x => x.OwnerId,
+                        principalSchema: "BuildingVitals",
+                        principalTable: "User",
+                        principalColumn: "Id",
+                        onDelete: ReferentialAction.Cascade);
+                });
+
+            migrationBuilder.CreateTable(
+                name: "ApartmentSensor",
+                schema: "BuildingVitals",
+                columns: table => new
+                {
+                    Id = table.Column<Guid>(nullable: false),
+                    SensorId = table.Column<Guid>(nullable: false),
+                    ApartmentId = table.Column<Guid>(nullable: false)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_ApartmentSensor", x => x.Id);
+                    table.ForeignKey(
+                        name: "FK_ApartmentSensor_Apartment_ApartmentId",
+                        column: x => x.ApartmentId,
+                        principalSchema: "BuildingVitals",
+                        principalTable: "Apartment",
+                        principalColumn: "Id",
+                        onDelete: ReferentialAction.Cascade);
+                    table.ForeignKey(
+                        name: "FK_ApartmentSensor_Sensor_SensorId",
+                        column: x => x.SensorId,
+                        principalSchema: "BuildingVitals",
+                        principalTable: "Sensor",
+                        principalColumn: "Id",
                         onDelete: ReferentialAction.Cascade);
                 });
 
@@ -65,10 +107,38 @@ namespace BuildingVitals.DataAccessImplementations.Migrations
                 schema: "BuildingVitals",
                 table: "Apartment",
                 column: "BuildingId");
+
+            migrationBuilder.CreateIndex(
+                name: "IX_Apartment_OwnerId",
+                schema: "BuildingVitals",
+                table: "Apartment",
+                column: "OwnerId");
+
+            migrationBuilder.CreateIndex(
+                name: "IX_ApartmentSensor_ApartmentId",
+                schema: "BuildingVitals",
+                table: "ApartmentSensor",
+                column: "ApartmentId");
+
+            migrationBuilder.CreateIndex(
+                name: "IX_ApartmentSensor_SensorId",
+                schema: "BuildingVitals",
+                table: "ApartmentSensor",
+                column: "SensorId");
+
+            migrationBuilder.CreateIndex(
+                name: "IX_Building_OwnerId",
+                schema: "BuildingVitals",
+                table: "Building",
+                column: "OwnerId");
         }
 
         protected override void Down(MigrationBuilder migrationBuilder)
         {
+            migrationBuilder.DropTable(
+                name: "ApartmentSensor",
+                schema: "BuildingVitals");
+
             migrationBuilder.DropTable(
                 name: "Apartment",
                 schema: "BuildingVitals");
