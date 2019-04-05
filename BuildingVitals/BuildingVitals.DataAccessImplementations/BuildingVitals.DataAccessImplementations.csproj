@@ -5,6 +5,10 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <Compile Remove="Migrations\20190405053843_AddedBuildingApartmentSensorEntities.cs" />
+  </ItemGroup>
+
+  <ItemGroup>
     <Folder Include="Configurations\Entities\Identity\" />
   </ItemGroup>
 
