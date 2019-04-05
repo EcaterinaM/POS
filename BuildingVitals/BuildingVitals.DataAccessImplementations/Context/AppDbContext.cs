@@ -1,7 +1,6 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Text;
 using BuildingVitals.DataAccessContracts.Entities.Identity;
+using BuildingVitals.DataAccessImplementations.Configurations;
 using BuildingVitals.DataAccessImplementations.Configurations.Entities.Identity;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
@@ -28,7 +27,9 @@ namespace BuildingVitals.DataAccessImplementations.Context
             modelBuilder.ApplyConfiguration(new UserRoleConfiguration());
             modelBuilder.ApplyConfiguration(new UserTokenConfiguration());
             modelBuilder.ApplyConfiguration(new UserConfiguration());
-            
+            modelBuilder.ApplyConfiguration(new BuildingConfiguration());
+            modelBuilder.ApplyConfiguration(new ApartmentConfiguration());
+            modelBuilder.ApplyConfiguration(new SensorConfiguration());
         }
     }
 }
