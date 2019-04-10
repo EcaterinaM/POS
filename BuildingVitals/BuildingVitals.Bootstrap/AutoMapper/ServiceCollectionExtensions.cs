@@ -11,6 +11,7 @@ namespace BuildingVitals.Bootstrap.AutoMapper
             var mappingConfig = new MapperConfiguration(mc =>
             {
                 mc.AddProfile(new UserProfile());
+                mc.AddProfile(new BuildingProfile());
             });
 
             var mapper = mappingConfig.CreateMapper();

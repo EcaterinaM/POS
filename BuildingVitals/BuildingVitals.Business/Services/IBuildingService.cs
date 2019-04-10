@@ -22,6 +22,6 @@ namespace BuildingVitals.BusinessContracts.Services
         /// </summary>
         /// <param name="ownerId">The owner identifier.</param>
         /// <returns></returns>
-        List<BuildingModel> GetByOwnerId(Guid ownerId);
+        List<BuildingModel> GetBuildingsByOwnerId(Guid ownerId);
     }
 }

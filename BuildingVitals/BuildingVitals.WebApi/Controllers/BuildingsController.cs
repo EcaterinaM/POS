@@ -1,5 +1,4 @@
 ﻿using System;
-using System.Net;
 using BuildingVitals.BusinessContracts.Models;
 using BuildingVitals.BusinessContracts.Services;
 using Microsoft.AspNetCore.Mvc;
@@ -20,13 +19,13 @@ namespace BuildingVitals.WebApi.Controllers
         [HttpPost("")]
         public IActionResult AddBuilding(BuildingModel buildingModel)
         {
-           return Ok(_buildingService.AddBuilding(buildingModel));
+           return Created("", _buildingService.AddBuilding(buildingModel));
         }
 
         [HttpGet("{ownerId}")]
-        public IActionResult AddBuilding(Guid ownerId)
+        public IActionResult GetBuildingForOwner(Guid ownerId)
         {
-            return Ok(_buildingService.GetByOwnerId(ownerId));
+            return Ok(_buildingService.GetBuildingsByOwnerId(ownerId));
         }
     }
 }
