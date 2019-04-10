@@ -16,7 +16,7 @@ namespace BuildingVitals.BusinessImplementations.Services.Base
         protected TRepository Repository;
         protected readonly IMapper ServiceMapper;
 
-        protected BaseService(TRepository repository, IMapper serviceMapper)
+        public BaseService(TRepository repository, IMapper serviceMapper)
         {
             Repository = repository;
             ServiceMapper = serviceMapper;
