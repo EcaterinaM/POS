@@ -12,6 +12,8 @@ namespace BuildingVitals.Bootstrap.DependencyInjection.Business
         {
             services.AddScoped<IUserService, UserService>();
             services.AddScoped<IBuildingService, BuildingService>();
+            services.AddScoped<IApartmentService, ApartmentService>();
+            services.AddScoped<ISensorService, SensorService>();
         }
     }
 }

@@ -19,6 +19,8 @@ namespace BuildingVitals.Bootstrap.DependencyInjection.DataAccess
                     HistoryRepository.DefaultTableName, "BuildingVitals")));
 
             services.AddScoped<IBuildingRepository, BuildingRepository>();
+            services.AddScoped<IApartmentRepository, ApartmentRepository>();
+            services.AddScoped<ISensorRepository, SensorRepository>();
 
             services.AddIdentity<User, IdentityRole<Guid>>()
                 .AddEntityFrameworkStores<AppDbContext>()
