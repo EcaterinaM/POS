@@ -55,6 +55,8 @@ namespace BuildingVitals.WebApi
                 };
             });
 
+            services.AddSession();
+
             services.AddSwaggerGen(c =>
             {
                 c.SwaggerDoc("v1", new Info { Title = "My API", Version = "v1" });
@@ -94,7 +96,7 @@ namespace BuildingVitals.WebApi
                 c.RoutePrefix = string.Empty;
             });
 
-
+            app.UseSession();
             app.UseMvc();
         }
     }
