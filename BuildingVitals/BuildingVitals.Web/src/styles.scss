@@ -1,16 +1,30 @@
 /* You can add global styles to this file, and also import other style files */
 @import url('https://fonts.googleapis.com/css?family=Poppins:300,300i,400,400i,500,500i,700');
 
-*{
-  margin:0;
-  padding:0;
+* {
+  margin: 0;
+  padding: 0;
   box-sizing: border-box;
   font-family: 'Poppins', sans-serif;
 }
 
-a{
+a {
   color: #454545;
-  &:visited{
+
+  &:visited {
     color: #454545;
+  }
+}
+
+.main-container {
+  height:calc(100vh - 60px);
+  overflow-y: auto;
+  overflow-x: hidden;
+  background-color: #fafafa;
+  padding: 32px;
+
+  h1 {
+    font-weight: 300;
+    margin-bottom: 32px;
   }
 }

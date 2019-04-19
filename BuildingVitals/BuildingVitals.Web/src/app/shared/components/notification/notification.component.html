@@ -1,0 +1,9 @@
+<div class="notification-container error" *ngIf="show">
+  <div class="flex-row-spaced">
+    <h3>{{title}}</h3>
+    <i class="material-icons-outlined pointer" (click)="show=false">
+      cancel
+    </i>
+  </div>
+  <h5>{{notificationText}}</h5>
+</div>

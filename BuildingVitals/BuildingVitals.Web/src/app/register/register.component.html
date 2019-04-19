@@ -9,7 +9,7 @@
           [formGroup]="registerForm">
       <div class="input-pair">
         <input class="simple-input"
-               placeholder="Username"
+               placeholder="Username*"
                formControlName="username"
                type="text"
                [class.invalid]="registerForm.get('username').invalid && isFormSubmitted">
@@ -25,7 +25,7 @@
 
       <div class="input-pair">
         <input class="simple-input"
-               placeholder="Password"
+               placeholder="Password*"
                formControlName="password"
                type="password"
                [class.invalid]="registerForm.get('password').invalid && isFormSubmitted">
@@ -41,7 +41,7 @@
 
       <div class="input-pair">
         <input class="simple-input"
-               placeholder="Re-type password"
+               placeholder="Re-type password*"
                formControlName="confirmPassword"
                type="password"
                [class.invalid]="registerForm.get('confirmPassword').invalid && isFormSubmitted">
@@ -57,7 +57,7 @@
 
       <div class="input-pair">
         <input class="simple-input"
-               placeholder="Name"
+               placeholder="Name*"
                formControlName="name"
                type="text"
                [class.invalid]="registerForm.get('name').invalid && isFormSubmitted">
@@ -73,7 +73,7 @@
 
       <div class="input-pair">
         <input class="simple-input"
-               placeholder="Surname"
+               placeholder="Surname*"
                formControlName="surname"
                type="text"
                [class.invalid]="registerForm.get('surname').invalid && isFormSubmitted">
@@ -89,7 +89,7 @@
 
       <div class="input-pair">
         <input class="simple-input"
-               placeholder="Email"
+               placeholder="Email*"
                formControlName="email"
                type="text"
                [class.invalid]="registerForm.get('email').invalid && isFormSubmitted">
@@ -129,3 +129,4 @@
 
   </div>
 </section>
+<notification [title]="'Error'" [notificationText]="'Register failed! Try again..'" [type]="error" [show]="registerFailed"></notification>

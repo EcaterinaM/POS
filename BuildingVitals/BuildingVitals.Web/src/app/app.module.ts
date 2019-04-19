@@ -20,12 +20,14 @@ import { AppComponent } from './app.component';
 
 import { LoginComponent } from './login';
 import { RegisterComponent } from './register/register.component';
+import { NotificationComponent } from './shared/components/notification/notification.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     LoginComponent,
-    RegisterComponent
+    RegisterComponent,
+    NotificationComponent
   ],
   imports: [
     BrowserModule,
