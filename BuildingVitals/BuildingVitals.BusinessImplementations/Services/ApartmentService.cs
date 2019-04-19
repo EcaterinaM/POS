@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using AnteaNL.CustomerSatisfaction.Common.Exceptions;
 using AutoMapper;
 using BuildingVitals.BusinessContracts.Models;
 using BuildingVitals.BusinessContracts.Services;
@@ -30,6 +31,23 @@ namespace BuildingVitals.BusinessImplementations.Services
         {
             var apartments = Repository.Filter(b => b.BuildingId == buildingId);
             return ServiceMapper.Map<List<ApartmentModel>>(apartments);
+        }
+
+        public List<ApartmentModel> GetAllApartments()
+        {
+            return ServiceMapper.Map<List<ApartmentModel>>(Repository.GetAll());
+        }
+
+        public ApartmentModel GetApartmentById(Guid id)
+        {
+            var apartment = Repository.GetById(id);
+
+            if (apartment == null)
+            {
+                throw new NotFoundException("Invalid apartment id");
+            }
+
+            return ServiceMapper.Map<ApartmentModel>(apartment);
         }
     }
 }

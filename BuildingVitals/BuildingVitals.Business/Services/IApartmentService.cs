@@ -12,5 +12,9 @@ namespace BuildingVitals.BusinessContracts.Services
         ApartmentModel GetApartmentByOwnerId(Guid ownerId);
 
         List<ApartmentModel> GetApartmentsByBuildingId(Guid buildingId);
+
+        List<ApartmentModel> GetAllApartments();
+
+        ApartmentModel GetApartmentById(Guid id);
     }
 }

@@ -22,7 +22,19 @@ namespace BuildingVitals.WebApi.Controllers
             return Created("", _apartmentService.AddApartment(apartmentModel));
         }
 
-        [HttpGet("{ownerId}")]
+        [HttpGet("")]
+        public IActionResult GetApartments()
+        {
+            return Ok(_apartmentService.GetAllApartments());
+        }
+
+        [HttpGet("{id}")]
+        public IActionResult GetApartmentById(Guid id)
+        {
+            return Ok(_apartmentService.GetApartmentById(id));
+        }
+
+        [HttpGet("{ownerId}/owner")]
         public IActionResult GetApartmentByOwnerId(Guid ownerId)
         {
             return Ok(_apartmentService.GetApartmentByOwnerId(ownerId));
