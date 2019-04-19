@@ -1,4 +1,6 @@
-﻿using BuildingVitals.BusinessContracts.Services.Identity;
+﻿using BuildingVitals.BusinessContracts.Services;
+using BuildingVitals.BusinessContracts.Services.Identity;
+using BuildingVitals.BusinessImplementations.Services;
 using BuildingVitals.BusinessImplementations.Services.Identity;
 using Microsoft.Extensions.DependencyInjection;
 
@@ -9,6 +11,9 @@ namespace BuildingVitals.Bootstrap.DependencyInjection.Business
         internal static void AddBusiness(this IServiceCollection services)
         {
             services.AddScoped<IUserService, UserService>();
+            services.AddScoped<IBuildingService, BuildingService>();
+            services.AddScoped<IApartmentService, ApartmentService>();
+            services.AddScoped<ISensorService, SensorService>();
         }
     }
 }

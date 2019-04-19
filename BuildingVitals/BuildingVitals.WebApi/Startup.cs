@@ -10,6 +10,7 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.IdentityModel.Tokens;
+using Swashbuckle.AspNetCore.Swagger;
 
 namespace BuildingVitals.WebApi
 {
@@ -53,6 +54,13 @@ namespace BuildingVitals.WebApi
                     }
                 };
             });
+
+            services.AddSession();
+
+            services.AddSwaggerGen(c =>
+            {
+                c.SwaggerDoc("v1", new Info { Title = "My API", Version = "v1" });
+            });
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -66,6 +74,7 @@ namespace BuildingVitals.WebApi
             {
                 app.UseHsts();
             }
+
             app.Use(async (ctx, next) => { await next(); if (ctx.Response.StatusCode == 204) { ctx.Response.ContentLength = 0; } });
 
 
@@ -79,6 +88,15 @@ namespace BuildingVitals.WebApi
 
             app.UseAppMiddlewares();
             app.UseHttpsRedirection();
+
+            app.UseSwagger();
+            app.UseSwaggerUI(c =>
+            {
+                c.SwaggerEndpoint("/swagger/v1/swagger.json", "My API V1");
+                c.RoutePrefix = string.Empty;
+            });
+
+            app.UseSession();
             app.UseMvc();
         }
     }

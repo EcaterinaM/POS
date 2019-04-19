@@ -35,9 +35,9 @@ namespace BuildingVitals.DataAccessImplementations.Repositories.Base
             return TryToExecute(() =>
             {
                 entity.Id = Guid.NewGuid();
-                var savedEntiy = Context.Add(entity);
+                var savedEntity = Context.Add(entity);
 
-                return savedEntiy.Entity;
+                return savedEntity.Entity;
             });
         }
 
