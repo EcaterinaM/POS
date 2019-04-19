@@ -16,6 +16,7 @@ export class RegisterComponent implements OnInit {
   isFormSubmitted = false;
   registerForm: FormGroup;
   registerModel: RegisterModel;
+  registerFailed: boolean = false;
 
   constructor(private formBuilder: FormBuilder,
     private registerService: RegisterService,
@@ -41,6 +42,7 @@ export class RegisterComponent implements OnInit {
         },
         () => {
           this.isFormSubmitted = false;
+          this.registerFailed = true;
         });
     }
   }
@@ -57,7 +59,7 @@ export class RegisterComponent implements OnInit {
       surname: [this.registerModel.surname, [Validators.required, Validators.maxLength(128)]],
       email: [this.registerModel.email, [Validators.required, Validators.pattern(RegexConstants.email)]],
       password: [this.registerModel.password, [Validators.required, Validators.maxLength(128)]],
-      confirmPassword: [this.registerModel.confirmPassword, [Validators.required,Validators.maxLength(128)]],
+      confirmPassword: [this.registerModel.confirmPassword, [Validators.required, Validators.maxLength(128)]],
       phoneNumber: [this.registerModel.phoneNumber, [Validators.required, Validators.pattern(RegexConstants.phoneNumber)]]
     });
   }

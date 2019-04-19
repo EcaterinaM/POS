@@ -1,9 +1,11 @@
 :host {
-  padding: 0 20px;
-  height: 70px;
+  padding: 0 32px;
+  height: 60px;
   display: flex;
   justify-content: space-between;
   align-items: center;
+  box-shadow: 0 2px 20px 0 rgba(0, 0, 0, 0.05);
+  position: relative;
 }
 
 .logo > img {

@@ -16,7 +16,7 @@
 }
 
 
-.furban-card {
+.card {
   @extend .general-card;
   position: relative;
   border-radius: 6px;
@@ -29,14 +29,14 @@
     transform: translate(0, -1px);
   }
 
-  .furban-content {
+  .content {
     @include flex;
     width: 100%;
     flex-grow: 1;
     padding: 10px;
   }
 
-  .furban-footer {
+  .footer {
     @include pos(absolute, $b: 0, $z:9);
     background-color: rgba(255,255,255,0.9);
     width: 100%;

@@ -1,0 +1,19 @@
+@import "../../../assets/styles/layout";
+@import "../../../assets/styles/card";
+
+.general-card {
+  @include flex(column, center,center);
+  background-color: $neutral-3;
+  width: 300px;
+  height: 300px;
+
+  img {
+    height: 150px;
+  }
+
+  h3 {
+    margin-top: 20px;
+    font-weight: 400;
+    @include no-select;
+  }
+}
