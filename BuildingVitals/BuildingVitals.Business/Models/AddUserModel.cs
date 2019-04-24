@@ -13,5 +13,15 @@
         public string Password { get; set; }
 
         public string PhoneNumber { get; set; }
+
+        public AddUserModel(AddUserWithApartmentModel addUserWithApartmentModel)
+        {
+            Name = addUserWithApartmentModel.Name;
+            Surname = addUserWithApartmentModel.Surname;
+            UserName = addUserWithApartmentModel.UserName;
+            Email = addUserWithApartmentModel.Email;
+            Password = addUserWithApartmentModel.Password;
+            PhoneNumber = addUserWithApartmentModel.PhoneNumber;
+        }
     }
 }

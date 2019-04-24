@@ -3,6 +3,7 @@ using System.Threading.Tasks;
 using AutoMapper;
 using BuildingVitals.BusinessContracts.Models;
 using BuildingVitals.BusinessContracts.Models.Identity;
+using BuildingVitals.BusinessContracts.Services;
 using BuildingVitals.BusinessContracts.Services.Identity;
 using BuildingVitals.Common.Constants;
 using BuildingVitals.DataAccessContracts.Entities.Identity;
@@ -15,12 +16,17 @@ namespace BuildingVitals.BusinessImplementations.Services.Identity
         private readonly UserManager<User> _userManager;
         private readonly RoleManager<IdentityRole<Guid>> _roleManager;
         private readonly IMapper _serviceMapper;
+        private readonly IApartmentService _apartmentService;
 
-        public UserService(UserManager<User> userManager, RoleManager<IdentityRole<Guid>> roleManager, IMapper serviceMapper)
+        public UserService(UserManager<User> userManager, 
+            RoleManager<IdentityRole<Guid>> roleManager, 
+            IMapper serviceMapper,
+            IApartmentService apartmentService)
         {
             _userManager = userManager;
             _roleManager = roleManager;
             _serviceMapper = serviceMapper;
+            _apartmentService = apartmentService;
         }
 
         public async Task<UserModel> FindByName(string userName)
@@ -60,9 +66,13 @@ namespace BuildingVitals.BusinessImplementations.Services.Identity
             await _userManager.AddAdmin(_serviceMapper, userModel);
         }
 
-        public async Task AddTenant(AddUserModel userModel)
+        public async Task AddTenant(AddUserWithApartmentModel userWithApartmentModel)
         {
-            await _userManager.AddTenant(_serviceMapper, userModel);
+            var userModel = new AddUserModel(userWithApartmentModel);
+            var addedUserId = await _userManager.AddTenant(_serviceMapper, userModel);
+
+            var apartment = new ApartmentModel(userWithApartmentModel, addedUserId);
+            _apartmentService.AddApartment(apartment);
         }
 
         private async Task<User> GetUserByValidToken(TokensAuthenticationModel tokensAuthenticationModel,
