@@ -30,7 +30,7 @@ namespace BuildingVitals.DataAccessImplementations.Context
             modelBuilder.ApplyConfiguration(new BuildingConfiguration());
             modelBuilder.ApplyConfiguration(new ApartmentConfiguration());
             modelBuilder.ApplyConfiguration(new SensorConfiguration());
-            modelBuilder.ApplyConfiguration(new ApartmentSensorConfiguration());
+            modelBuilder.ApplyConfiguration(new MetricConfiguration());
         }
     }
 }

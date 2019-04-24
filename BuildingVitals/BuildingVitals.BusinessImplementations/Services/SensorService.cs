@@ -1,4 +1,5 @@
-﻿using AutoMapper;
+﻿using System;
+using AutoMapper;
 using BuildingVitals.BusinessContracts.Models;
 using BuildingVitals.BusinessContracts.Services;
 using BuildingVitals.BusinessImplementations.Services.Base;
@@ -13,5 +14,9 @@ namespace BuildingVitals.BusinessImplementations.Services
             : base(repository, serviceMapper)
         { }
 
+        public Guid AddSensor(SensorModel sensorModel)
+        {
+            return base.Add(sensorModel);
+        }
     }
 }

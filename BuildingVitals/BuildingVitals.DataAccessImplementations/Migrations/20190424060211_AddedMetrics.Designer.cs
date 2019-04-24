@@ -4,14 +4,16 @@ using BuildingVitals.DataAccessImplementations.Context;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 namespace BuildingVitals.DataAccessImplementations.Migrations
 {
     [DbContext(typeof(AppDbContext))]
-    partial class AppDbContextModelSnapshot : ModelSnapshot
+    [Migration("20190424060211_AddedMetrics")]
+    partial class AddedMetrics
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -41,6 +43,24 @@ namespace BuildingVitals.DataAccessImplementations.Migrations
                     b.HasIndex("OwnerId");
 
                     b.ToTable("Apartment");
+                });
+
+            modelBuilder.Entity("BuildingVitals.DataAccessContracts.Entities.ApartmentSensor", b =>
+                {
+                    b.Property<Guid>("Id")
+                        .ValueGeneratedOnAdd();
+
+                    b.Property<Guid>("ApartmentId");
+
+                    b.Property<Guid>("SensorId");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("ApartmentId");
+
+                    b.HasIndex("SensorId");
+
+                    b.ToTable("ApartmentSensor");
                 });
 
             modelBuilder.Entity("BuildingVitals.DataAccessContracts.Entities.Building", b =>
@@ -155,14 +175,10 @@ namespace BuildingVitals.DataAccessImplementations.Migrations
                     b.Property<Guid>("Id")
                         .ValueGeneratedOnAdd();
 
-                    b.Property<Guid>("ApartmentId");
-
                     b.Property<string>("Name")
                         .IsRequired();
 
                     b.HasKey("Id");
-
-                    b.HasIndex("ApartmentId");
 
                     b.ToTable("Sensor");
                 });
@@ -287,6 +303,19 @@ namespace BuildingVitals.DataAccessImplementations.Migrations
                         .OnDelete(DeleteBehavior.Cascade);
                 });
 
+            modelBuilder.Entity("BuildingVitals.DataAccessContracts.Entities.ApartmentSensor", b =>
+                {
+                    b.HasOne("BuildingVitals.DataAccessContracts.Entities.Apartment", "Apartment")
+                        .WithMany()
+                        .HasForeignKey("ApartmentId")
+                        .OnDelete(DeleteBehavior.Cascade);
+
+                    b.HasOne("BuildingVitals.DataAccessContracts.Entities.Sensor", "Sensor")
+                        .WithMany()
+                        .HasForeignKey("SensorId")
+                        .OnDelete(DeleteBehavior.Cascade);
+                });
+
             modelBuilder.Entity("BuildingVitals.DataAccessContracts.Entities.Building", b =>
                 {
                     b.HasOne("BuildingVitals.DataAccessContracts.Entities.Identity.User", "Owner")
@@ -300,14 +329,6 @@ namespace BuildingVitals.DataAccessImplementations.Migrations
                     b.HasOne("BuildingVitals.DataAccessContracts.Entities.Sensor", "Sensor")
                         .WithMany("Metrics")
                         .HasForeignKey("SensorId")
-                        .OnDelete(DeleteBehavior.Restrict);
-                });
-
-            modelBuilder.Entity("BuildingVitals.DataAccessContracts.Entities.Sensor", b =>
-                {
-                    b.HasOne("BuildingVitals.DataAccessContracts.Entities.Apartment", "Apartment")
-                        .WithMany("Sensors")
-                        .HasForeignKey("ApartmentId")
                         .OnDelete(DeleteBehavior.Restrict);
                 });
 
