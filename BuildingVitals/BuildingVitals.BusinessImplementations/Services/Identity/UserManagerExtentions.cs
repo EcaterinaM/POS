@@ -20,13 +20,14 @@ namespace BuildingVitals.BusinessImplementations.Services.Identity
             await userManager.AddToRoleAsync(user, RoleConstants.Admin);
         }
 
-        public static async Task AddTenant(this UserManager<User> userManager, IMapper serviceMapper, AddUserModel userModel)
+        public static async Task<Guid> AddTenant(this UserManager<User> userManager, IMapper serviceMapper, AddUserModel userModel)
         {
             var user = serviceMapper.Map<User>(userModel);
             user.Id = Guid.NewGuid();
 
             await userManager.CreateAsync(user, userModel.Password);
             await userManager.AddToRoleAsync(user, RoleConstants.Tenant);
+            return user.Id;
         }
     }
 }
