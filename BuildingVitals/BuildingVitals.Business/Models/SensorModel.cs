@@ -5,10 +5,8 @@ namespace BuildingVitals.BusinessContracts.Models
 {
     public class SensorModel: BaseModel
     {
-        public DateTime Date { get; set; }
-
         public string Name { get; set; }
 
-        public decimal Value { get; set; }
+        public Guid ApartmentId { get; set; }
     }
 }

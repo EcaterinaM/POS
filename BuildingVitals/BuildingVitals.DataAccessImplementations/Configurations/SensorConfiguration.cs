@@ -10,9 +10,11 @@ namespace BuildingVitals.DataAccessImplementations.Configurations
         {
             builder.HasKey(a => a.Id);
             builder.Property(a => a.Name).IsRequired();
-            builder.Property(a => a.Date).IsRequired();
-            builder.Property(a => a.Value).IsRequired();
 
+            builder.HasOne(s => s.Apartment)
+                .WithMany(a => a.Sensors)
+                .HasForeignKey(s => s.ApartmentId)
+                .OnDelete(DeleteBehavior.Restrict);
         }
     }
 }

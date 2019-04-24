@@ -4,12 +4,12 @@ using BuildingVitals.DataAccessContracts.Entities;
 
 namespace BuildingVitals.BusinessImplementations.Configurations.AutoMapper
 {
-    public class SensorProfile : Profile
+    public class ApartmentSensorProfile : Profile
     {
-        public SensorProfile()
+        public ApartmentSensorProfile()
         {
-            CreateMap<SensorModel, Sensor>();
-            CreateMap<Sensor, SensorModel>();
+            CreateMap<ApartmentSensor, MetricModel>();
+            CreateMap<MetricModel, ApartmentSensor>();
         }
     }
 }

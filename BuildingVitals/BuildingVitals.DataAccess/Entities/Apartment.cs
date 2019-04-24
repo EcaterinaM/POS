@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 using BuildingVitals.DataAccessContracts.Entities.Base;
 using BuildingVitals.DataAccessContracts.Entities.Identity;
 
@@ -17,6 +18,8 @@ namespace BuildingVitals.DataAccessContracts.Entities
         public Building Building { get; set; }
 
         public User Owner { get; set; }
+
+        public List<Sensor> Sensors { get; set; }
     }
 
 }

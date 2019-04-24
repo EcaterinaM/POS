@@ -16,6 +16,10 @@ namespace BuildingVitals.DataAccessImplementations.Configurations
                 .WithMany(a => a.Apartments)
                 .HasForeignKey(b => b.BuildingId)
                 .OnDelete(DeleteBehavior.Restrict);
+
+            builder.HasMany(a => a.Sensors)
+                .WithOne(s => s.Apartment)
+                .OnDelete(DeleteBehavior.Restrict);
         }
     }
 }
