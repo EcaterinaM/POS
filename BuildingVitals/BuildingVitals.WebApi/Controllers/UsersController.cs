@@ -24,7 +24,7 @@ namespace BuildingVitals.WebApi.Controllers
         }
 
         [HttpPost("addTenant")]
-        public async Task<IActionResult> AddTenant(AddUserModel userModel)
+        public async Task<IActionResult> AddTenant(AddUserWithApartmentModel userModel)
         {
             await _userService.AddTenant(userModel);
             return Ok();

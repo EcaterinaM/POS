@@ -14,6 +14,8 @@ namespace BuildingVitals.Bootstrap.AutoMapper
                 mc.AddProfile(new BuildingProfile());
                 mc.AddProfile(new ApartmentProfile());
                 mc.AddProfile(new SensorProfile());
+                mc.AddProfile(new ApartmentSensorProfile());
+                mc.AddProfile(new MetricProfile());
             });
 
             var mapper = mappingConfig.CreateMapper();

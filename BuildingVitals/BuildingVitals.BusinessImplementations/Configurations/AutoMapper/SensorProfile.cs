@@ -4,7 +4,7 @@ using BuildingVitals.DataAccessContracts.Entities;
 
 namespace BuildingVitals.BusinessImplementations.Configurations.AutoMapper
 {
-    public class SensorProfile: Profile
+    public class SensorProfile : Profile
     {
         public SensorProfile()
         {

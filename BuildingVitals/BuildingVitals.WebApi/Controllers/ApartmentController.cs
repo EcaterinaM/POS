@@ -1,12 +1,15 @@
 ﻿using System;
+using System.Net;
 using BuildingVitals.BusinessContracts.Models;
 using BuildingVitals.BusinessContracts.Services;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 
 namespace BuildingVitals.WebApi.Controllers
 {
     [Route("v1/apartments")]
     [ApiController]
+    [Authorize]
     public class ApartmentController : ControllerBase
     {
         private readonly IApartmentService _apartmentService;

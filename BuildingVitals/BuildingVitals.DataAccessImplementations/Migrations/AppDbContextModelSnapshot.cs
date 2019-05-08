@@ -43,24 +43,6 @@ namespace BuildingVitals.DataAccessImplementations.Migrations
                     b.ToTable("Apartment");
                 });
 
-            modelBuilder.Entity("BuildingVitals.DataAccessContracts.Entities.ApartmentSensor", b =>
-                {
-                    b.Property<Guid>("Id")
-                        .ValueGeneratedOnAdd();
-
-                    b.Property<Guid>("ApartmentId");
-
-                    b.Property<Guid>("SensorId");
-
-                    b.HasKey("Id");
-
-                    b.HasIndex("ApartmentId");
-
-                    b.HasIndex("SensorId");
-
-                    b.ToTable("ApartmentSensor");
-                });
-
             modelBuilder.Entity("BuildingVitals.DataAccessContracts.Entities.Building", b =>
                 {
                     b.Property<Guid>("Id")
@@ -150,19 +132,37 @@ namespace BuildingVitals.DataAccessImplementations.Migrations
                     b.ToTable("User");
                 });
 
-            modelBuilder.Entity("BuildingVitals.DataAccessContracts.Entities.Sensor", b =>
+            modelBuilder.Entity("BuildingVitals.DataAccessContracts.Entities.Metric", b =>
                 {
                     b.Property<Guid>("Id")
                         .ValueGeneratedOnAdd();
 
                     b.Property<DateTime>("Date");
 
-                    b.Property<string>("Name")
-                        .IsRequired();
+                    b.Property<Guid>("SensorId");
 
                     b.Property<decimal>("Value");
 
                     b.HasKey("Id");
+
+                    b.HasIndex("SensorId");
+
+                    b.ToTable("Metric");
+                });
+
+            modelBuilder.Entity("BuildingVitals.DataAccessContracts.Entities.Sensor", b =>
+                {
+                    b.Property<Guid>("Id")
+                        .ValueGeneratedOnAdd();
+
+                    b.Property<Guid>("ApartmentId");
+
+                    b.Property<string>("Name")
+                        .IsRequired();
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("ApartmentId");
 
                     b.ToTable("Sensor");
                 });
@@ -287,25 +287,28 @@ namespace BuildingVitals.DataAccessImplementations.Migrations
                         .OnDelete(DeleteBehavior.Cascade);
                 });
 
-            modelBuilder.Entity("BuildingVitals.DataAccessContracts.Entities.ApartmentSensor", b =>
-                {
-                    b.HasOne("BuildingVitals.DataAccessContracts.Entities.Apartment", "Apartment")
-                        .WithMany()
-                        .HasForeignKey("ApartmentId")
-                        .OnDelete(DeleteBehavior.Cascade);
-
-                    b.HasOne("BuildingVitals.DataAccessContracts.Entities.Sensor", "Sensor")
-                        .WithMany()
-                        .HasForeignKey("SensorId")
-                        .OnDelete(DeleteBehavior.Cascade);
-                });
-
             modelBuilder.Entity("BuildingVitals.DataAccessContracts.Entities.Building", b =>
                 {
                     b.HasOne("BuildingVitals.DataAccessContracts.Entities.Identity.User", "Owner")
                         .WithMany()
                         .HasForeignKey("OwnerId")
                         .OnDelete(DeleteBehavior.Cascade);
+                });
+
+            modelBuilder.Entity("BuildingVitals.DataAccessContracts.Entities.Metric", b =>
+                {
+                    b.HasOne("BuildingVitals.DataAccessContracts.Entities.Sensor", "Sensor")
+                        .WithMany("Metrics")
+                        .HasForeignKey("SensorId")
+                        .OnDelete(DeleteBehavior.Restrict);
+                });
+
+            modelBuilder.Entity("BuildingVitals.DataAccessContracts.Entities.Sensor", b =>
+                {
+                    b.HasOne("BuildingVitals.DataAccessContracts.Entities.Apartment", "Apartment")
+                        .WithMany("Sensors")
+                        .HasForeignKey("ApartmentId")
+                        .OnDelete(DeleteBehavior.Restrict);
                 });
 
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityRoleClaim<System.Guid>", b =>

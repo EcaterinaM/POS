@@ -1,10 +1,14 @@
-﻿using BuildingVitals.BusinessContracts.Services;
+﻿using BuildingVitals.BusinessContracts.Models;
+using BuildingVitals.BusinessContracts.Services;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 
 namespace BuildingVitals.WebApi.Controllers
 {
     [Route("v1/sensors")]
     [ApiController]
+    [Authorize]
+
     public class SensorController : ControllerBase
     {
         private readonly ISensorService _sensorService;
@@ -12,6 +16,13 @@ namespace BuildingVitals.WebApi.Controllers
         public SensorController(ISensorService sensorService)
         {
             _sensorService = sensorService;
+        }
+
+
+        [HttpPost("")]
+        public IActionResult AddSensor(SensorModel sensorModel)
+        {
+            return Created("", _sensorService.AddSensor(sensorModel));
         }
     }
 }
