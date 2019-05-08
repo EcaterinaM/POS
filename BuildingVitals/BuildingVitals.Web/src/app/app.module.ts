@@ -21,16 +21,20 @@ import { AppComponent } from './app.component';
 import { LoginComponent } from './login';
 import { RegisterComponent } from './register/register.component';
 import { NotificationComponent } from './shared/components/notification/notification.component';
+import { MaterialModule } from './material.module';
+import { AddBuildingComponent } from './admin/add-building/add-building.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     LoginComponent,
     RegisterComponent,
-    NotificationComponent
+    NotificationComponent,
+    AddBuildingComponent
   ],
   imports: [
     BrowserModule,
+    MaterialModule,
     FormsModule,
     ReactiveFormsModule,
     BrowserAnimationsModule,
@@ -48,6 +52,7 @@ import { NotificationComponent } from './shared/components/notification/notifica
     })
   ],
   providers: [{ provide: LocationStrategy, useClass: HashLocationStrategy }],
+  entryComponents: [AddBuildingComponent],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
