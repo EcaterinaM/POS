@@ -2,9 +2,16 @@
   <h1>Admin dashboard!</h1>
 
   <section class="flex-row-start wrap">
-    <div class="general-card">
-      <img src="../../assets/images/building.svg" />
+    <div class="general-card" (click)="addNewBuilding()">
+      <img src="../../assets/images/plus-button.svg" />
       <h3>Add building</h3>
+    </div>
+
+    <div *ngFor="let building of buildings"
+         class="general-card"
+         (click)="addNewBuilding()">
+      <img src="../../assets/images/building.svg" />
+      <h3>{{building.name}}</h3>
     </div>
   </section>
 </div>

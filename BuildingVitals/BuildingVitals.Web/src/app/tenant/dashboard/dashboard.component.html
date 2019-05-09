@@ -1,1 +1,29 @@
 <h1>Tenant dashboard!</h1>
+<div class="charts-container">
+    <div class="sensor-data">
+        <app-chart *ngIf="chart.chartData && chart.chartLabels.length > 0" [colors]="chart.colors" [data]="chart.chartData"
+            [labels]="chart.chartLabels" [legend]="chart.showChartLegend" [title]="chart.chartTitle" [type]="chart.chartType"
+            [options]="chartOptions">
+        </app-chart>
+    </div>
+    <div class="sensor-data">
+        <app-chart *ngIf="chart.chartData && chart.chartLabels.length > 0" [colors]="chart.colors" [data]="chart.chartData"
+            [labels]="chart.chartLabels" [legend]="chart.showChartLegend" [title]="chart.chartTitle" [type]="chart.chartType"
+            [options]="chartOptions">
+        </app-chart>
+    </div>
+
+    <div class="sensor-data">
+        <app-chart *ngIf="chart.chartData && chart.chartLabels.length > 0" [colors]="chart.colors" [data]="chart.chartData"
+            [labels]="chart.chartLabels" [legend]="chart.showChartLegend" [title]="chart.chartTitle" [type]="chart.chartType"
+            [options]="chartOptions">
+        </app-chart>
+    </div>
+    <div class="sensor-data">
+        <app-chart *ngIf="chart.chartData && chart.chartLabels.length > 0" [colors]="chart.colors" [data]="chart.chartData"
+            [labels]="chart.chartLabels" [legend]="chart.showChartLegend" [title]="chart.chartTitle" [type]="chart.chartType"
+            [options]="chartOptions">
+        </app-chart>
+    </div>
+
+</div>
