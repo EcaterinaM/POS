@@ -7,11 +7,14 @@ import { AdminRoutingModule } from './admin.routing.module';
 
 import { AuthenticationGuard } from './shared';
 
+import { BuildingComponent } from './building';
 import { DashboardComponent } from './dashboard';
+
 
 @NgModule({
   declarations: [
-    DashboardComponent
+    DashboardComponent,
+    BuildingComponent
   ],
   imports: [
     CommonModule,

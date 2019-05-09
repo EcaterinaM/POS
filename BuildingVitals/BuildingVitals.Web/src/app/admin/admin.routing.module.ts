@@ -4,11 +4,19 @@ import { Routes, RouterModule } from '@angular/router';
 import { AuthenticationGuard } from './shared';
 
 import { DashboardComponent } from './dashboard';
+import { BuildingComponent } from './building';
+
 
 const routes: Routes = [
   {
     path: 'dashboard',
     component: DashboardComponent,
+    canActivate: [AuthenticationGuard],
+    pathMatch: 'full'
+  },
+  {
+    path: 'building',
+    component: BuildingComponent,
     canActivate: [AuthenticationGuard],
     pathMatch: 'full'
   },

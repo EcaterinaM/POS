@@ -1,29 +1,22 @@
-<h1>Tenant dashboard!</h1>
-<div class="charts-container">
-    <div class="sensor-data">
-        <app-chart *ngIf="chart.chartData && chart.chartLabels.length > 0" [colors]="chart.colors" [data]="chart.chartData"
-            [labels]="chart.chartLabels" [legend]="chart.showChartLegend" [title]="chart.chartTitle" [type]="chart.chartType"
-            [options]="chartOptions">
-        </app-chart>
-    </div>
-    <div class="sensor-data">
-        <app-chart *ngIf="chart.chartData && chart.chartLabels.length > 0" [colors]="chart.colors" [data]="chart.chartData"
-            [labels]="chart.chartLabels" [legend]="chart.showChartLegend" [title]="chart.chartTitle" [type]="chart.chartType"
-            [options]="chartOptions">
-        </app-chart>
+<div class="main-container">
+  <h1>Tenant dashboard</h1>
+  <section class="flex-row-start wrap">
+
+    <div class="general-card"
+         (click)="editProfile()">
+      <img src="../../assets/images/edit-user.svg" />
+      <h3>Edit Profile</h3>
     </div>
 
-    <div class="sensor-data">
-        <app-chart *ngIf="chart.chartData && chart.chartLabels.length > 0" [colors]="chart.colors" [data]="chart.chartData"
-            [labels]="chart.chartLabels" [legend]="chart.showChartLegend" [title]="chart.chartTitle" [type]="chart.chartType"
-            [options]="chartOptions">
-        </app-chart>
-    </div>
-    <div class="sensor-data">
-        <app-chart *ngIf="chart.chartData && chart.chartLabels.length > 0" [colors]="chart.colors" [data]="chart.chartData"
-            [labels]="chart.chartLabels" [legend]="chart.showChartLegend" [title]="chart.chartTitle" [type]="chart.chartType"
-            [options]="chartOptions">
-        </app-chart>
+    <div class="general-card"
+         (click)="redirect()">
+      <img src="../../assets/images/temperature.svg" />
+      <h3>Temperature</h3>
     </div>
 
+    <div class="general-card">
+      <img src="../../assets/images/humidity.svg" />
+      <h3>Humidity</h3>
+    </div>
+  </section>
 </div>

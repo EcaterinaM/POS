@@ -8,10 +8,12 @@ import { TenantRoutingModule } from './tenant.routing.module';
 import { AuthenticationGuard } from './shared';
 
 import { DashboardComponent } from './dashboard';
+import { TemperatureComponent } from './sensors';
 
 @NgModule({
   declarations: [
-    DashboardComponent
+    DashboardComponent,
+    TemperatureComponent
   ],
   imports: [
     CommonModule,
