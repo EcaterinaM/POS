@@ -9,6 +9,9 @@ namespace BuildingVitals.BusinessContracts.Models
 
         public DateTime Date { get; set; }
 
-        public decimal Value { get; set; }
+        public double Humidity { get; set; }
+
+        public double Temperature { get; set; }
+
     }
 }

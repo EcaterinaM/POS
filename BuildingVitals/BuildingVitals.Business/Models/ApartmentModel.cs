@@ -13,6 +13,8 @@ namespace BuildingVitals.BusinessContracts.Models
 
         public Guid BuildingId { get; set; }
 
+        public ApartmentModel(){}
+
         public ApartmentModel(AddUserWithApartmentModel addUserWithApartmentModel, Guid ownerId)
         {
             Floor = addUserWithApartmentModel.Floor;

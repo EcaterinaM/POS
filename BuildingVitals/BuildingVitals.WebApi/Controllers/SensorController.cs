@@ -7,7 +7,7 @@ namespace BuildingVitals.WebApi.Controllers
 {
     [Route("v1/sensors")]
     [ApiController]
-    [Authorize]
+    //[Authorize]
 
     public class SensorController : ControllerBase
     {
@@ -20,9 +20,9 @@ namespace BuildingVitals.WebApi.Controllers
 
 
         [HttpPost("")]
-        public IActionResult AddSensor(SensorModel sensorModel)
+        public IActionResult AddSensorToApartment(SensorModel sensorModel)
         {
-            return Created("", _sensorService.AddSensor(sensorModel));
+            return Created("", _sensorService.AddSensorToApartment(sensorModel));
         }
     }
 }

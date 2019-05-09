@@ -9,7 +9,9 @@ namespace BuildingVitals.DataAccessContracts.Entities
 
         public DateTime Date { get; set; }
 
-        public decimal Value { get; set; }
+        public string Temperature { get; set; }
+        
+        public string Humidty { get; set; }
 
         public Sensor Sensor { get; set; }  
     }

@@ -38,6 +38,7 @@ export class RegisterComponent implements OnInit {
 
       this.registerService.register(this.registerModel).subscribe(
         () => {
+          this.isFormSubmitted = true;
           this.router.navigateByUrl('/login');
         },
         () => {
