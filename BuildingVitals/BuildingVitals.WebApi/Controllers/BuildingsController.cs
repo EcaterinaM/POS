@@ -8,7 +8,7 @@ namespace BuildingVitals.WebApi.Controllers
 {
     [Route("v1/buildings")]
     [ApiController]
-    [Authorize]
+    //[Authorize]
 
     public class BuildingsController : ControllerBase
     {

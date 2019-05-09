@@ -10,7 +10,6 @@ namespace BuildingVitals.DataAccessImplementations.Configurations
         {
             builder.HasKey(a => a.Id);
             builder.Property(a => a.Date).IsRequired();
-            builder.Property(a => a.Value).IsRequired();
 
             builder.HasOne(a => a.Sensor)
                 .WithMany(a => a.Metrics)

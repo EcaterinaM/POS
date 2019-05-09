@@ -14,6 +14,9 @@
 
         public string PhoneNumber { get; set; }
 
+        public AddUserModel()
+        {}
+
         public AddUserModel(AddUserWithApartmentModel addUserWithApartmentModel)
         {
             Name = addUserWithApartmentModel.Name;

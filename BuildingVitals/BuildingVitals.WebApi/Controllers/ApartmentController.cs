@@ -9,7 +9,7 @@ namespace BuildingVitals.WebApi.Controllers
 {
     [Route("v1/apartments")]
     [ApiController]
-    [Authorize]
+    //[Authorize]
     public class ApartmentController : ControllerBase
     {
         private readonly IApartmentService _apartmentService;

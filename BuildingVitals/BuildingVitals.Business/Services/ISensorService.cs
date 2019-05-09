@@ -6,6 +6,6 @@ namespace BuildingVitals.BusinessContracts.Services
 {
     public interface ISensorService: IBaseService<SensorModel>
     {
-        Guid AddSensor(SensorModel sensorModel);
+        Guid AddSensorToApartment(SensorModel sensorModel);
     }
 }

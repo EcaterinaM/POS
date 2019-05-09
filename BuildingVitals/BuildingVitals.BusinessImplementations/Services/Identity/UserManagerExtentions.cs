@@ -26,7 +26,7 @@ namespace BuildingVitals.BusinessImplementations.Services.Identity
             user.Id = Guid.NewGuid();
 
             await userManager.CreateAsync(user, userModel.Password);
-            await userManager.AddToRoleAsync(user, RoleConstants.Tenant);
+            var x = await userManager.AddToRoleAsync(user, RoleConstants.Tenant);
             return user.Id;
         }
     }

@@ -14,7 +14,7 @@ namespace BuildingVitals.BusinessImplementations.Services
             : base(repository, serviceMapper)
         { }
 
-        public Guid AddSensor(SensorModel sensorModel)
+        public Guid AddSensorToApartment(SensorModel sensorModel)
         {
             return base.Add(sensorModel);
         }
