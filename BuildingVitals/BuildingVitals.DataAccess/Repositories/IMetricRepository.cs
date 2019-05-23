@@ -1,4 +1,6 @@
-﻿using BuildingVitals.DataAccessContracts.Entities;
+﻿using System;
+using System.Collections.Generic;
+using BuildingVitals.DataAccessContracts.Entities;
 using BuildingVitals.DataAccessContracts.Repositories.Base;
 
 namespace BuildingVitals.DataAccessContracts.Repositories
@@ -11,5 +13,6 @@ namespace BuildingVitals.DataAccessContracts.Repositories
     /// </seealso>
     public interface IMetricRepository: IBaseRepository<Metric>
     {
+        List<Metric> GetTemperatureMetricsForSensor(Guid id);
     }
 }

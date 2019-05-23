@@ -24,5 +24,11 @@ namespace BuildingVitals.WebApi.Controllers
         {
             return Created("", _sensorService.AddSensorToApartment(sensorModel));
         }
+
+        [HttpGet("{id}")]
+        public IActionResult GetTemperatureData()
+        {
+            return Ok();
+        }
     }
 }

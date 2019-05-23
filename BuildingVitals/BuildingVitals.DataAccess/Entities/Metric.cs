@@ -11,7 +11,7 @@ namespace BuildingVitals.DataAccessContracts.Entities
 
         public string Temperature { get; set; }
         
-        public string Humidty { get; set; }
+        public string Humidity { get; set; }
 
         public Sensor Sensor { get; set; }  
     }
