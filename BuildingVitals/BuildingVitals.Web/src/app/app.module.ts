@@ -23,6 +23,7 @@ import { RegisterComponent } from './register/register.component';
 import { NotificationComponent } from './shared/components/notification/notification.component';
 import { MaterialModule } from './material.module';
 import { AddBuildingComponent } from './admin/add-building/add-building.component';
+import { AddApartmentComponent } from './admin/add-apartment/add-apartment.component';
 import { EditProfileComponent } from './tenant/edit-profile/edit-profile.component';
 
 @NgModule({
@@ -32,7 +33,8 @@ import { EditProfileComponent } from './tenant/edit-profile/edit-profile.compone
     RegisterComponent,
     NotificationComponent,
     AddBuildingComponent,
-    EditProfileComponent
+    EditProfileComponent,
+    AddApartmentComponent
   ],
   imports: [
     BrowserModule,
@@ -54,7 +56,7 @@ import { EditProfileComponent } from './tenant/edit-profile/edit-profile.compone
     })
   ],
   providers: [{ provide: LocationStrategy, useClass: HashLocationStrategy }],
-  entryComponents: [AddBuildingComponent, EditProfileComponent],
+  entryComponents: [AddBuildingComponent, EditProfileComponent, AddApartmentComponent],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

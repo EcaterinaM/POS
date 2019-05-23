@@ -15,7 +15,7 @@ const routes: Routes = [
     pathMatch: 'full'
   },
   {
-    path: 'building',
+    path: 'building/:id',
     component: BuildingComponent,
     canActivate: [AuthenticationGuard],
     pathMatch: 'full'

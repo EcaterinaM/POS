@@ -26,6 +26,6 @@ export class DashboardComponent {
   }
 
   redirect(): void {
-    this.router.navigateByUrl('temperature');
+    this.router.navigateByUrl('tenant/temperature');
   }
 }
