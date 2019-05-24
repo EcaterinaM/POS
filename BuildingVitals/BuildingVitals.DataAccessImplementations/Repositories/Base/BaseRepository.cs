@@ -55,7 +55,7 @@ namespace BuildingVitals.DataAccessImplementations.Repositories.Base
             TryToExecute(() => Context.Remove(entity));
         }
 
-        public List<T> Filter(Expression<Func<T, bool>> predicate, IEnumerable<Expression<Func<T, object>>> includeProperties = null)
+        public List<T> Filter(Expression<Func<T, bool>> predicate, IEnumerable<string> includeProperties = null)
         {
             var entities = Context.Set<T>().Where(predicate);
 

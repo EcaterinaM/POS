@@ -3,7 +3,7 @@ using BuildingVitals.BusinessContracts.Models.Base;
 
 namespace BuildingVitals.BusinessContracts.Models.Identity
 {
-    public class UserModel : BaseModel
+    public class UserIdentityModel : BaseModel
     {
         public string Name { get; set; }
 
