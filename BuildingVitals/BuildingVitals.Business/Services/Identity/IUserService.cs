@@ -66,5 +66,12 @@ namespace BuildingVitals.BusinessContracts.Services.Identity
         /// <returns></returns>
         Task AddTenant(AddUserWithApartmentModel userModel);
 
+        /// <summary>
+        /// Edits the user.
+        /// </summary>
+        /// <param name="userModel">The user model.</param>
+        /// <param name="username">The username.</param>
+        Task<UserModel> EditUser(EditUserModel userModel, string username);
+
     }
 }

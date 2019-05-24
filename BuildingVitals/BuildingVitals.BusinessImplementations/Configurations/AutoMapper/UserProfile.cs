@@ -12,6 +12,7 @@ namespace BuildingVitals.BusinessImplementations.Configurations.AutoMapper
             CreateMap<User, UserModel>();
             CreateMap<UserModel, User>();
             CreateMap<AddUserModel, User>();
+            CreateMap<EditUserModel, User>();
         }
     }
 }

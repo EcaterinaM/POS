@@ -9,7 +9,8 @@ import {
   AuthenticationService, JwtOptionsService, LoaderService, LocalStorageService,
   AdminNotAuthenticateGuard, TenantNotAuthenticateGuard,
   BaseService,
-  RegisterService
+  RegisterService,
+  UserService
 } from './services';
 
 @NgModule({
@@ -32,6 +33,7 @@ import {
     ServiceHelper,
 
     RegisterService,
+    UserService,
 
     BaseService,
 
