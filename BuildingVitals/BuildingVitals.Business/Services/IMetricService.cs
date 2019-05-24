@@ -1,4 +1,5 @@
-﻿using BuildingVitals.BusinessContracts.Models;
+﻿using System;
+using BuildingVitals.BusinessContracts.Models;
 using BuildingVitals.BusinessContracts.Services.Base;
 
 namespace BuildingVitals.BusinessContracts.Services
@@ -9,8 +10,9 @@ namespace BuildingVitals.BusinessContracts.Services
         /// Adds the specified apartment sensor model.
         /// </summary>
         /// <param name="metricModel">The apartment sensor model.</param>
-        void AddMetric(MetricModel metricModel);    
+        void AddMetric(MetricModel metricModel);
 
+        SensorDataListModel GetSensorData(Guid sensorId, string property);
     }
 }
     
