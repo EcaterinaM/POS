@@ -29,5 +29,17 @@ namespace BuildingVitals.WebApi.Controllers
             await _userService.AddTenant(userModel);
             return Ok();
         }
+
+        [HttpGet("{username}")]
+        public IActionResult GetUserDetailsByUsername(string username)
+        {
+            return Ok(_userService.FindByName(username).Result);
+        }
+
+        [HttpPut("{username}")]
+        public IActionResult UpdateUserDetails(EditUserModel editUserModel, string username)
+        {
+            return Ok(_userService.EditUser(editUserModel, username).Result);
+        }
     }
 }

@@ -22,6 +22,7 @@ namespace BuildingVitals.Bootstrap.DependencyInjection.DataAccess
             services.AddScoped<IApartmentRepository, ApartmentRepository>();
             services.AddScoped<ISensorRepository, SensorRepository>();
             services.AddScoped<IMetricRepository, MetricRepository>();
+            services.AddScoped<IUserRepository, UserRepository>();
 
             services.AddIdentity<User, IdentityRole<Guid>>()
                 .AddEntityFrameworkStores<AppDbContext>()

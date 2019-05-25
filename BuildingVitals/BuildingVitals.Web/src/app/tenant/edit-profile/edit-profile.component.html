@@ -1,7 +1,7 @@
 <h1 mat-dialog-title>
   Edit profile
 </h1>
-<mat-dialog-content>
+<mat-dialog-content *ngIf="tenant">
   <form [formGroup]="editProfileForm">
     <mat-form-field class="full-width" [style.margin-bottom.px]="20">
       <input matInput
@@ -37,7 +37,7 @@
   <button class="secondary-button" (click)="closeDialog()">
     <h6>Cancel</h6>
   </button>
-  <button class="primary-button" (click)="saveBuilding()">
+  <button class="primary-button" (click)="editProfile()">
     <h6>Save</h6>
   </button>
 </div>
