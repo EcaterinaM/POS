@@ -6,6 +6,7 @@ import { SharedModule } from '../shared';
 import { AdminRoutingModule } from './admin.routing.module';
 
 import { AuthenticationGuard } from './shared';
+import { ApartmentService } from './shared';
 
 import { BuildingComponent } from './building';
 import { DashboardComponent } from './dashboard';
@@ -22,7 +23,8 @@ import { DashboardComponent } from './dashboard';
     SharedModule
   ],
   providers: [
-    AuthenticationGuard
+    AuthenticationGuard,
+    ApartmentService
   ]
 })
 export class AdminModule { }

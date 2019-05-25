@@ -33,12 +33,12 @@ namespace BuildingVitals.BusinessImplementations.Services.Identity
             _userRepository = userRepository;
         }
 
-        public async Task<UserModel> FindByName(string userName)
+        public async Task<UserIdentityModel> FindByName(string userName)
         {
             return await FindUser(userName);
         }
 
-        public async Task<UserModel> Find(string userName, string password)
+        public async Task<UserIdentityModel> Find(string userName, string password)
         {
             return await FindUser(userName, password);
         }
@@ -117,13 +117,13 @@ namespace BuildingVitals.BusinessImplementations.Services.Identity
             return user;
         }
 
-        private async Task<UserModel> FindUser(string userName, string password = null)
+        private async Task<UserIdentityModel> FindUser(string userName, string password = null)
         {
             var user = await _userManager.FindByNameAsync(userName);
             if (user == null || (password != null && !await _userManager.CheckPasswordAsync(user, password)))
                 return null;
 
-            var userModel = _serviceMapper.Map<UserModel>(user);
+            var userModel = _serviceMapper.Map<UserIdentityModel>(user);
             userModel.Roles = await _userManager.GetRolesAsync(user);
             return userModel;
         }

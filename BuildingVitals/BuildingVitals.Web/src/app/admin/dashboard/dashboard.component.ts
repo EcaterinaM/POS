@@ -36,10 +36,8 @@ export class DashboardComponent implements OnInit{
     );
   }
 
-  redirectToBuilding() {
-    console.log('ceva');
-    this.router.navigateByUrl('/building');
-    //this.router.navigate(['/user', 5])
+  redirectToBuilding(buildingId: string) {
+    this.router.navigate(['admin/building', buildingId]);
   }
 
   private getBuildings(): void {
