@@ -9,7 +9,8 @@ import {
   AuthenticationService, JwtOptionsService, LoaderService, LocalStorageService,
   AdminNotAuthenticateGuard, TenantNotAuthenticateGuard,
   BaseService,
-  RegisterService
+  RegisterService,
+  UserService
 } from './services';
 import { AuthenticationInterceptor } from './interceptors';
 
@@ -32,6 +33,7 @@ import { AuthenticationInterceptor } from './interceptors';
     ServiceHelper,
 
     RegisterService,
+    UserService,
 
     BaseService,
 

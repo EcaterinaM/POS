@@ -15,7 +15,7 @@ namespace BuildingVitals.BusinessContracts.Services.Identity
         /// </summary>
         /// <param name="username">The username.</param>
         /// <returns>UserModel</returns>
-        Task<UserModel> FindByName(string username);
+        Task<UserIdentityModel> FindByName(string username);
 
         /// <summary>
         /// Checks the password asynchronous.
@@ -23,7 +23,7 @@ namespace BuildingVitals.BusinessContracts.Services.Identity
         /// <param name="username">The username.</param>
         /// <param name="password">The password.</param>
         /// <returns>True the user model found by username and password in the database.</returns>
-        Task<UserModel> Find(string username, string password);
+        Task<UserIdentityModel> Find(string username, string password);
 
         /// <summary>
         /// Adds the refresh token for a user.
@@ -65,6 +65,13 @@ namespace BuildingVitals.BusinessContracts.Services.Identity
         /// <param name="userModel">The user model.</param>
         /// <returns></returns>
         Task AddTenant(AddUserWithApartmentModel userModel);
+
+        /// <summary>
+        /// Edits the user.
+        /// </summary>
+        /// <param name="userModel">The user model.</param>
+        /// <param name="username">The username.</param>
+        Task<UserModel> EditUser(EditUserModel userModel, string username);
 
     }
 }

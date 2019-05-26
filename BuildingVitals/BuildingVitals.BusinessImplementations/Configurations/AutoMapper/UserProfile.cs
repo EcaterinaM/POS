@@ -9,9 +9,14 @@ namespace BuildingVitals.BusinessImplementations.Configurations.AutoMapper
     {
         public UserProfile()
         {
+            CreateMap<User, UserIdentityModel>();
+            CreateMap<UserIdentityModel, User>();
+            CreateMap<AddUserModel, User>();
+
             CreateMap<User, UserModel>();
             CreateMap<UserModel, User>();
             CreateMap<AddUserModel, User>();
+            CreateMap<EditUserModel, User>();
         }
     }
 }

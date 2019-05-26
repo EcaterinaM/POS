@@ -54,6 +54,6 @@ namespace BuildingVitals.DataAccessContracts.Repositories.Base
         /// <param name="predicate">The predicate.</param>
         /// <param name="includeProperties">The include properties.</param>
         /// <returns></returns>
-        List<T> Filter(Expression<Func<T, bool>> predicate, IEnumerable<Expression<Func<T, object>>> includeProperties = null);
+        List<T> Filter(Expression<Func<T, bool>> predicate, IEnumerable<string> includeProperties = null);
     }
 }

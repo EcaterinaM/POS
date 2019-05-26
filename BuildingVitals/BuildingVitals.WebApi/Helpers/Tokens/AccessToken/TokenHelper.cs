@@ -54,14 +54,14 @@ namespace BuildingVitals.WebApi.Helpers.Tokens.AccessToken
             return new JwtSecurityTokenHandler().WriteToken(jwt);
         }
 
-        private IEnumerable<Claim> GenerateIdentityClaims(UserModel user)
+        private IEnumerable<Claim> GenerateIdentityClaims(UserIdentityModel userIdentity)
         {
             var claims = new List<Claim>
             {
-                new Claim(ClaimTypes.NameIdentifier, user.Id.ToString()),
-                new Claim(ClaimTypes.Name, user.UserName)
+                new Claim(ClaimTypes.NameIdentifier, userIdentity.Id.ToString()),
+                new Claim(ClaimTypes.Name, userIdentity.UserName)
             };
-            claims.AddRange(user.Roles.Select(userRole => new Claim(ClaimTypes.Role, userRole)));
+            claims.AddRange(userIdentity.Roles.Select(userRole => new Claim(ClaimTypes.Role, userRole)));
 
             return claims;
         }
