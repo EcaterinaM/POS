@@ -10,6 +10,7 @@ import { ApartmentService } from './shared';
 
 import { BuildingComponent } from './building';
 import { DashboardComponent } from './dashboard';
+import { MaterialModule } from '../material.module';
 
 
 @NgModule({

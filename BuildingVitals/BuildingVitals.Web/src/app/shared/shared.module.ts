@@ -11,17 +11,17 @@ import {
   BaseService,
   RegisterService
 } from './services';
+import { AuthenticationInterceptor } from './interceptors';
 
 @NgModule({
   declarations: [
     LoaderComponent,
     HeaderComponent,
-    ChartComponent
+    ChartComponent,
   ],
   imports: [
     CommonModule,
-    ChartsModule
-  ],
+    ChartsModule  ],
   exports: [
     LoaderComponent,
     HeaderComponent,
@@ -53,4 +53,3 @@ import {
 })
 export class SharedModule { }
 
-import { AuthenticationInterceptor } from './interceptors';

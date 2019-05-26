@@ -1,6 +1,6 @@
-import { Component, OnInit, Input } from '@angular/core';
+import { Component, OnInit, Input, Inject } from '@angular/core';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
-import { MatDialogRef } from '@angular/material';
+import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material';
 import { AddApartment } from '../shared/models';
 import { ActivatedRoute } from '@angular/router';
 import { ApartmentService } from '../shared';
@@ -14,11 +14,15 @@ export class AddApartmentComponent implements OnInit {
   apartmentForm: FormGroup;
   apartment: AddApartment;
   currentBuildingId: string;
-
-  constructor(private activeRoute: ActivatedRoute,
+  existingApartmentId: string;
+  constructor(@Inject(MAT_DIALOG_DATA) data,
+    private activeRoute: ActivatedRoute,
     private formBuilder: FormBuilder,
     private dialogRef: MatDialogRef<AddApartmentComponent>,
-    private apartmentService: ApartmentService) { }
+    private apartmentService: ApartmentService) {
+      this.currentBuildingId = data.buildingId;
+      this.existingApartmentId = data.existingApartmentId;
+  }
 
   ngOnInit() {
     this.activeRoute.params.subscribe(params => {
