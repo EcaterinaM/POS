@@ -1,5 +1,5 @@
-<div class="main-container">
-  <h1>Building apartments</h1>
+<div class="main-container" *ngIf="building">
+  <h1>Building apartments - {{building.name}}</h1>
   <section class="flex-column-center">
     <h1>You are on floor: {{curentFloor}}</h1>
     <div class="flex-row-center">

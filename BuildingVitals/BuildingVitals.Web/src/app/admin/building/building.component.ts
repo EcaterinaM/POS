@@ -2,8 +2,9 @@ import { Component, OnInit } from '@angular/core';
 import { MatDialogConfig, MatDialog } from '@angular/material';
 import { AddApartmentComponent } from '../add-apartment/add-apartment.component';
 import { ActivatedRoute } from '@angular/router';
-import { ApartmentService } from '../shared';
+import { ApartmentService, BuildingService } from '../shared';
 import { Apartment } from '../shared/models/_apartment';
+import { Building } from '../shared/models';
 
 
 @Component({
@@ -14,18 +15,30 @@ import { Apartment } from '../shared/models/_apartment';
 export class BuildingComponent implements OnInit {
   currentBuildingId: string;
   apartments = {};
+  building: Building;
   curentFloor: string = "0";
   apartmentsReady: boolean = false;
   floors = ["0", "1", "2", "3", "4", "5"];
   constructor(public dialog: MatDialog,
     private route: ActivatedRoute,
-    private apartmentService: ApartmentService) { }
+    private apartmentService: ApartmentService,
+    private buildingService: BuildingService) { }
 
   ngOnInit(): void {
     this.route.paramMap.subscribe(params => {
       this.currentBuildingId = params.get("id");
+      this.getBuilding();
       this.getApartments();
     });
+  }
+
+
+  getBuilding() {
+    this.buildingService.getBuildingById(this.currentBuildingId).subscribe(
+      (data) => {
+        this.building = data;
+      }
+    );
   }
 
   getApartments() {
@@ -64,17 +77,22 @@ export class BuildingComponent implements OnInit {
       dialogConfig.data = {
         buildingId: this.currentBuildingId,
         existingApartmentId: apartment.id,
-        dialogType: 0
+        dialogType: 0,
+        floor: this.curentFloor,
+        apartmentNumber: id
       };
     } else {
       dialogConfig.data = {
         buildingId: this.currentBuildingId,
-        dialogType: 1
+        dialogType: 1,
+        floor: this.curentFloor,
+        apartmentNumber: id
       };
     }
     const buildingDialogRef = this.dialog.open(AddApartmentComponent, dialogConfig);
     buildingDialogRef.afterClosed().subscribe(
       data => {
+        this.getApartments();
       }
     );
   }
@@ -82,6 +100,4 @@ export class BuildingComponent implements OnInit {
   changeBuildingFloor(floor: string) {
     this.curentFloor = floor;
   }
-
-
 }
