@@ -1,0 +1,59 @@
+@import "../../../../assets/styles/card";
+@import "../../../../assets/styles/layout";
+
+.custom-height {
+  height: calc(100% - 80px);
+  align-items: stretch;
+}
+
+img {
+  height: 80px;
+  width: 80px;
+}
+
+.general-card {
+  cursor: default;
+}
+
+.general-card.padding-12 {
+  display: flex;
+  justify-content: center;
+  // align-items: center;
+  flex-grow: 1;
+}
+
+.general-card:not(.padding-12) {
+  flex-grow: 6;
+}
+
+.flex-column-start {
+  width: 50%;
+  justify-content: flex-start;
+
+  &:first-of-type {
+    margin-right: 32px;
+
+    .general-card:not(:last-child) {
+      margin-bottom: 24px;
+    }
+  }
+}
+
+h3 {
+  margin-top: 20px;
+  font-weight: 200;
+  font-size: 20px;
+}
+
+.cover-image {
+  width: calc(100% - 100px);
+  margin: 0 50px;
+  height: 320px;
+  background-image: url('https://images.unsplash.com/photo-1514053026555-49ce8886ae41?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=634&q=80');
+  background-size: cover;
+  background-position: center;
+  border-radius: 6px;
+  box-shadow: 0 2px 20px 0 rgba(0, 0, 0, 0.4);
+  margin-bottom: -20px;
+  z-index: 0;
+}
