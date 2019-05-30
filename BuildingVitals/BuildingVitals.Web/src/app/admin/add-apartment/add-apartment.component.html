@@ -1,81 +1,84 @@
-<h1  mat-dialog-title>
-    Add apartment
-  </h1>
-  <mat-dialog-content>
-    <form [formGroup]="apartmentForm">
-      <mat-form-field class="full-width" [style.margin-bottom.px]="20">
-        <input matInput
-               placeholder="Owner name"
-               formControlName="name">
-        <mat-error *ngIf="apartmentForm.get('name').errors?.required">
-          Owner name is required.
-        </mat-error>
-      </mat-form-field>
-      <mat-form-field class="full-width" [style.margin-bottom.px]="20">
-        <input matInput
-               placeholder="Owner surname"
-               formControlName="surname">
-        <mat-error *ngIf="apartmentForm.get('surname').errors?.required">
-            Owner surname is required.
-        </mat-error>
-      </mat-form-field>
-      <mat-form-field class="full-width" [style.margin-bottom.px]="20">
-        <input matInput
-               placeholder="Owner userName"
-               formControlName="userName">
-        <mat-error *ngIf="apartmentForm.get('userName').errors?.required">
-            Owner userName is required.
-        </mat-error>
-      </mat-form-field>
-      <mat-form-field class="full-width" [style.margin-bottom.px]="20">
-        <input matInput
-               placeholder="Owner email"
-               formControlName="email">
-        <mat-error *ngIf="apartmentForm.get('email').errors?.required">
-            Owner email is required.
-        </mat-error>
-      </mat-form-field>
-      <mat-form-field class="full-width" [style.margin-bottom.px]="20" *ngIf="dialogType == 1">
-        <input matInput
-               type="password"
-               placeholder="Owner password"
-               formControlName="password">
-        <mat-error *ngIf="apartmentForm.get('password').errors?.required">
-            Owner password is required.
-        </mat-error>
-      </mat-form-field>
-      <mat-form-field class="full-width" [style.margin-bottom.px]="20">
-        <input matInput
-               placeholder="Owner phoneNumber"
-               formControlName="phoneNumber">
-        <mat-error *ngIf="apartmentForm.get('phoneNumber').errors?.required">
-            Owner phoneNumber is required.
-        </mat-error>
-      </mat-form-field>
-      <mat-form-field class="full-width" [style.margin-bottom.px]="20">
-        <input matInput
-               placeholder="Apartment floor"
-               formControlName="floor">
-        <mat-error *ngIf="apartmentForm.get('floor').errors?.required">
-            Apartment floor is required.
-        </mat-error>
-      </mat-form-field>
-      <mat-form-field class="full-width" [style.margin-bottom.px]="20">
-        <input matInput
-               placeholder="Apartment number"
-               formControlName="number">
-        <mat-error *ngIf="apartmentForm.get('number').errors?.required">
-            Apartment number is required.
-        </mat-error>
-      </mat-form-field>
-    </form>
-  </mat-dialog-content>
-  
-  <div class="buttons-right-container">
-    <button class="secondary-button" (click)="closeDialog()">
-      <h6>Cancel</h6>
-    </button>
-    <button class="primary-button" (click)="saveApartment()">
-      <h6>Save</h6>
-    </button>
-  </div>
+<h1 mat-dialog-title *ngIf="dialogType == 1">
+  Add apartment
+</h1>
+<h1 mat-dialog-title *ngIf="dialogType == 0">
+  View apartment
+</h1>
+<mat-dialog-content *ngIf="formReady">
+  <form [formGroup]="apartmentForm">
+    <mat-form-field class="full-width" [style.margin-bottom.px]="20">
+      <input matInput
+             placeholder="Owner name"
+             formControlName="name">
+      <mat-error *ngIf="apartmentForm.get('name').errors?.required">
+        Owner name is required.
+      </mat-error>
+    </mat-form-field>
+    <mat-form-field class="full-width" [style.margin-bottom.px]="20">
+      <input matInput
+             placeholder="Owner surname"
+             formControlName="surname">
+      <mat-error *ngIf="apartmentForm.get('surname').errors?.required">
+        Owner surname is required.
+      </mat-error>
+    </mat-form-field>
+    <mat-form-field class="full-width" [style.margin-bottom.px]="20" *ngIf="dialogType == 1">
+      <input matInput
+             placeholder="Owner userName"
+             formControlName="userName">
+      <mat-error *ngIf="apartmentForm.get('userName').errors?.required">
+        Owner userName is required.
+      </mat-error>
+    </mat-form-field>
+    <mat-form-field class="full-width" [style.margin-bottom.px]="20">
+      <input matInput
+             placeholder="Owner email"
+             formControlName="email">
+      <mat-error *ngIf="apartmentForm.get('email').errors?.required">
+        Owner email is required.
+      </mat-error>
+    </mat-form-field>
+    <mat-form-field class="full-width" [style.margin-bottom.px]="20" *ngIf="dialogType == 1">
+      <input matInput
+             type="password"
+             placeholder="Owner password"
+             formControlName="password">
+      <mat-error *ngIf="apartmentForm.get('password').errors?.required">
+        Owner password is required.
+      </mat-error>
+    </mat-form-field>
+    <mat-form-field class="full-width" [style.margin-bottom.px]="20">
+      <input matInput
+             placeholder="Owner phoneNumber"
+             formControlName="phoneNumber">
+      <mat-error *ngIf="apartmentForm.get('phoneNumber').errors?.required">
+        Owner phoneNumber is required.
+      </mat-error>
+    </mat-form-field>
+    <mat-form-field class="full-width" [style.margin-bottom.px]="20">
+      <input matInput
+             placeholder="Apartment floor"
+             formControlName="floor">
+      <mat-error *ngIf="apartmentForm.get('floor').errors?.required">
+        Apartment floor is required.
+      </mat-error>
+    </mat-form-field>
+    <mat-form-field class="full-width" [style.margin-bottom.px]="20">
+      <input matInput
+             placeholder="Apartment number"
+             formControlName="number">
+      <mat-error *ngIf="apartmentForm.get('number').errors?.required">
+        Apartment number is required.
+      </mat-error>
+    </mat-form-field>
+  </form>
+</mat-dialog-content>
+
+<div class="buttons-right-container">
+  <button class="secondary-button" (click)="closeDialog()">
+    <h6>Cancel</h6>
+  </button>
+  <button class="primary-button" (click)="saveApartment()" *ngIf="dialogType == 1">
+    <h6>Save</h6>
+  </button>
+</div>

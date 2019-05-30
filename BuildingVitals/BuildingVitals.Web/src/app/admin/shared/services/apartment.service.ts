@@ -17,7 +17,7 @@ export class ApartmentService extends BaseService {
     this.baseServiceUrl = environment.serviceUrl + 'v1/apartments';
   }
 
-  save(apartment: Apartment): Observable<AddApartment> {
+  save(apartment: AddApartment): Observable<AddApartment> {
     return this.httpClient.post<AddApartment>
       (`${environment.serviceUrl}v1/users/addTenant`, apartment, this.serviceHelper.getHttpHeaders());
   }
