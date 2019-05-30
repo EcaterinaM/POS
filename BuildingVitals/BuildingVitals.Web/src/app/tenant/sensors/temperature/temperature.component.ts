@@ -9,6 +9,8 @@ import { AuthenticationHelper } from '../../../shared';
 import { SensorDataList } from '../../../shared'
 import { UserModel } from 'src/app/shared/models/user.model';
 import { interval, Subscription } from 'rxjs';
+import { Property } from '../../../shared/models/property.model';
+
 @Component({
   selector: 'app-temperature',
   templateUrl: './temperature.component.html',
@@ -20,13 +22,13 @@ export class TemperatureComponent {
   chartData: SensorDataList;
   username: string;
   user: UserModel;
-  
+
   subscription: Subscription;
 
   constructor(private sensorDataService: SensorDataService,
     private jwtHelperService: JwtHelperService,
     private authHelper: AuthenticationHelper,
-    private userService: UserService){
+    private userService: UserService) {
   }
 
   ngOnInit(): void {
@@ -34,7 +36,7 @@ export class TemperatureComponent {
     this.username = this.jwtHelperService.decodeToken(token)["http://schemas.xmlsoap.org/ws/2005/05/identity/claims/name"];
     this.userService.getUserDetails(this.username).subscribe((res) => {
       this.user = res;
-    this.buildChart();
+      this.buildChart();
 
     });
 
@@ -53,6 +55,15 @@ export class TemperatureComponent {
         ChartTypeConstants.lineChart,
         'Temperature',
         false);
+        var max = sensorData.dataList.reduce((a, b) => Math.max(a, b));
+        var min = sensorData.dataList.reduce((a, b) => Math.min(a, b));
+        var maxPosition = sensorData.dataList.indexOf(max);
+        var minPosition = sensorData.dataList.indexOf(min);
+  
+        var minDate = sensorData.dates[minPosition];
+        var maxDate = sensorData.dates[maxPosition];
+        this.property = new Property(max.toString(), maxDate.toString().replace('T', ' '), min.toString(), minDate.toString().replace('T', ' '));
+      
     }
     );
   }
