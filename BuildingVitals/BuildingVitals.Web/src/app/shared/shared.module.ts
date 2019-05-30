@@ -10,19 +10,21 @@ import {
   AdminNotAuthenticateGuard, TenantNotAuthenticateGuard,
   BaseService,
   RegisterService,
-  UserService
+  UserService,
+  SensorDataService,
+  MetricService
 } from './services';
+import { AuthenticationInterceptor } from './interceptors';
 
 @NgModule({
   declarations: [
     LoaderComponent,
     HeaderComponent,
-    ChartComponent
+    ChartComponent,
   ],
   imports: [
     CommonModule,
-    ChartsModule
-  ],
+    ChartsModule  ],
   exports: [
     LoaderComponent,
     HeaderComponent,
@@ -34,6 +36,7 @@ import {
 
     RegisterService,
     UserService,
+    SensorDataService,
 
     BaseService,
 
@@ -41,6 +44,7 @@ import {
     JwtOptionsService,
     LocalStorageService,
     LoaderService,
+    MetricService,
 
     AdminNotAuthenticateGuard,
     TenantNotAuthenticateGuard,
@@ -55,4 +59,3 @@ import {
 })
 export class SharedModule { }
 
-import { AuthenticationInterceptor } from './interceptors';

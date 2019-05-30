@@ -5,6 +5,7 @@ using BuildingVitals.BusinessContracts.Models;
 using BuildingVitals.BusinessContracts.Models.Identity;
 using BuildingVitals.BusinessContracts.Services;
 using BuildingVitals.BusinessContracts.Services.Identity;
+using BuildingVitals.BusinessImplementations.Mail;
 using BuildingVitals.Common.Constants;
 using BuildingVitals.DataAccessContracts.Entities.Identity;
 using BuildingVitals.DataAccessContracts.Repositories;
@@ -19,18 +20,25 @@ namespace BuildingVitals.BusinessImplementations.Services.Identity
         private readonly IMapper _serviceMapper;
         private readonly IApartmentService _apartmentService;
         private readonly IUserRepository _userRepository;
+        private readonly ISensorService _sensorService;
+
+        private readonly IMailService _mailService;
 
         public UserService(UserManager<User> userManager, 
             RoleManager<IdentityRole<Guid>> roleManager, 
             IMapper serviceMapper,
             IApartmentService apartmentService,
-            IUserRepository userRepository)
+            IUserRepository userRepository,
+            ISensorService sensorService,
+            IMailService mailService)
         {
             _userManager = userManager;
             _roleManager = roleManager;
             _serviceMapper = serviceMapper;
             _apartmentService = apartmentService;
             _userRepository = userRepository;
+            _sensorService = sensorService;
+            _mailService = mailService;
         }
 
         public async Task<UserIdentityModel> FindByName(string userName)
@@ -77,6 +85,8 @@ namespace BuildingVitals.BusinessImplementations.Services.Identity
 
             var apartment = new ApartmentModel(userWithApartmentModel, addedUserId);
             _apartmentService.AddApartment(apartment);
+
+            _mailService.NewTenantAdded(userModel);
         }
 
         public async Task<UserModel> EditUser(EditUserModel editUser, string username)
@@ -125,6 +135,8 @@ namespace BuildingVitals.BusinessImplementations.Services.Identity
 
             var userModel = _serviceMapper.Map<UserIdentityModel>(user);
             userModel.Roles = await _userManager.GetRolesAsync(user);
+            var apartmentId = _apartmentService.GetApartmentByOwnerId(userModel.Id).Id;
+            userModel.SensorId = _sensorService.GetByApartmentId(apartmentId).Id;
             return userModel;
         }
     }

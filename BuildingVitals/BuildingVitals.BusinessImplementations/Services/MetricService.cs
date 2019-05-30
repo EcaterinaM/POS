@@ -36,5 +36,19 @@ namespace BuildingVitals.BusinessImplementations.Services
                 Dates = sensorMetrics.Select(sm => sm.Date).ToList()
             };
         }
+
+        public PropertyMinMax GetMaxAndMinValues(string property, Guid sensorId)
+        {
+            var metrics = Repository.GetAll().Where(s => s.Id == sensorId);
+
+
+            return new PropertyMinMax()
+            {
+                MaxValue = "30",
+                MaxValueDate = DateTime.Now.AddDays(-40).GetDateTimeFormats()[0],
+                MinValue = "20.6",
+                MinValueDate = DateTime.Now.AddDays(-2).GetDateTimeFormats()[0]
+            };
+        }
     }
 }   

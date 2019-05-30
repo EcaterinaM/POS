@@ -2,6 +2,7 @@
 using BuildingVitals.BusinessContracts.Services;
 using BuildingVitals.BusinessContracts.Services.Identity;
 using BuildingVitals.BusinessImplementations.SensorJob;
+using BuildingVitals.BusinessImplementations.Mail;
 using BuildingVitals.BusinessImplementations.Services;
 using BuildingVitals.BusinessImplementations.Services.Identity;
 using Microsoft.Extensions.DependencyInjection;
@@ -19,6 +20,7 @@ namespace BuildingVitals.Bootstrap.DependencyInjection.Business
             services.AddScoped<IMetricService, MetricService>();
 
             services.AddScoped<ISensorJob, SensorJob>();
+            services.AddScoped<IMailService, MailService>();
         }
     }
 }
