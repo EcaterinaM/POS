@@ -9,7 +9,7 @@ import {
   AuthenticationService, JwtOptionsService, LoaderService, LocalStorageService,
   AdminNotAuthenticateGuard, TenantNotAuthenticateGuard,
   BaseService,
-  RegisterService
+  RegisterService, SensorDataService
 } from './services';
 
 @NgModule({
@@ -39,6 +39,7 @@ import {
     JwtOptionsService,
     LocalStorageService,
     LoaderService,
+    SensorDataService,
 
     AdminNotAuthenticateGuard,
     TenantNotAuthenticateGuard,

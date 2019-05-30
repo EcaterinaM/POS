@@ -2,6 +2,8 @@ import { Component, OnInit } from '@angular/core';
 import { Chart, ChartDatasetModel, ChartOptionsModel, LineChartColorModel, YAxisModel } from '../../../shared/components/chart/models';
 import { ChartTypeConstants, ChartStyleConstants } from '../../../shared/components/chart/constants';
 
+import { SensorDataService } from '../../../shared'
+import { SensorDataList } from '../../../shared'
 
 @Component({
   selector: 'app-temperature',
@@ -11,6 +13,10 @@ import { ChartTypeConstants, ChartStyleConstants } from '../../../shared/compone
 export class TemperatureComponent implements OnInit{
   chart: Chart;
   chartOptions: ChartOptionsModel;
+
+  constructor(private sensorDataService: ){
+
+  }
 
   ngOnInit(): void {
     this.buildChart();
