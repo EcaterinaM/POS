@@ -1,28 +1,56 @@
-<div class="charts-container">
-  <div class="sensor-data">
-    <app-chart *ngIf="chart.chartData && chart.chartLabels.length > 0" [colors]="chart.colors" [data]="chart.chartData"
-               [labels]="chart.chartLabels" [legend]="chart.showChartLegend" [title]="chart.chartTitle" [type]="chart.chartType"
-               [options]="chartOptions">
-    </app-chart>
-  </div>
-  <div class="sensor-data">
-    <app-chart *ngIf="chart.chartData && chart.chartLabels.length > 0" [colors]="chart.colors" [data]="chart.chartData"
-               [labels]="chart.chartLabels" [legend]="chart.showChartLegend" [title]="chart.chartTitle" [type]="chart.chartType"
-               [options]="chartOptions">
-    </app-chart>
+<div class="main-container">
+  <h1>Temperature sensor</h1>
+
+  <div class="flex-row-start full-width custom-height">
+    <section class="flex-column-start">
+      <div class="general-card ">
+        <app-chart *ngIf="chart.chartData && chart.chartLabels.length > 0" [colors]="chart.colors" [data]="chart.chartData"
+                   [labels]="chart.chartLabels" [legend]="chart.showChartLegend" [title]="chart.chartTitle" [type]="chart.chartType"
+                   [options]="chartOptions">
+        </app-chart>
+      </div>
+      <div class="general-card padding-12-32">
+        <div class="flex-row-start">
+          <div class="flex-column-start" [style.flex]="1" >
+            <h3>Min temperature</h3>
+            <h1>19 grade</h1>
+          </div>
+          <img src="/assets/images/cold.png" />
+
+        </div>
+
+      </div>
+      <div class="general-card padding-12-32">
+        <div class="flex-row-start">
+          <div class="flex-column-start" [style.flex]="1">
+            <h3>Max temperature</h3>
+            <h1>26 grade</h1>
+          </div>            <img src="/assets/images/hot.png" />
+          
+        </div>
+      </div>
+
+    </section>
+
+    <section class="flex-column-start">
+      <div class="cover-image"></div>
+      <div class="general-card full-height padding-20">
+        <h3 [style.margin-bottom.px]="40">Ideal temperature</h3>
+        <h4>Can there ever be a perfect temperature that you should heat your home to?</h4>
+        <p [style.margin-bottom.px]="40">
+          The best answer as far as we are concerned is – the lowest comfortable temperature. Some people will happily turn down their heating in the bedroom but don’t want to wrap up in their living room, while others will put on jumpers and use an extra high tog duvet. At the end of the day, it’s your money – so decide for yourself what you are comfortable with, but don’t set the thermostat to 21°C simply out of habit!
+        </p>
+
+        <h4>
+          Every degree costs you money
+        </h4>
+        <p>
+          Every house will vary, but the generally accepted rule is that for every degree you increase your thermostat, you will be paying an extra £60 a year. This is because your boiler needs to work harder to get the temperature up – if you have electric heating the savings could be even higher.
+
+          For larger or more inefficient homes, this can be much higher. So bear that in mind when you go to turn up your heating. If you need to be warmer, put on a jumper, or you could try supplementary heating like an infrared heating panel. This boosts the temperature in a room with instant heat, without having to turn up your thermostat for the whole house.
+        </p>
+      </div>
+    </section>
   </div>
 
-  <div class="sensor-data">
-    <app-chart *ngIf="chart.chartData && chart.chartLabels.length > 0" [colors]="chart.colors" [data]="chart.chartData"
-               [labels]="chart.chartLabels" [legend]="chart.showChartLegend" [title]="chart.chartTitle" [type]="chart.chartType"
-               [options]="chartOptions">
-    </app-chart>
-  </div>
-  <div class="sensor-data">
-    <app-chart *ngIf="chart.chartData && chart.chartLabels.length > 0" [colors]="chart.colors" [data]="chart.chartData"
-               [labels]="chart.chartLabels" [legend]="chart.showChartLegend" [title]="chart.chartTitle" [type]="chart.chartType"
-               [options]="chartOptions">
-    </app-chart>
-  </div>
 
-</div>

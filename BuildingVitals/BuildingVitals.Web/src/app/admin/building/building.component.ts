@@ -47,7 +47,7 @@ export class BuildingComponent implements OnInit {
   }
 
   checkApartment(apartmentNumber: number) {
-    if (this.apartments) {
+    if (this.apartments && this.apartments[this.curentFloor]) {
       let apartmentsOnFloor = this.apartments[this.curentFloor];
       return apartmentsOnFloor.find(x => x.number == apartmentNumber) ? true : false;
     }
@@ -61,16 +61,27 @@ export class BuildingComponent implements OnInit {
     if (this.checkApartment(id)) {
       let apartmentsOnFloor = this.apartments[this.curentFloor];
       apartment = apartmentsOnFloor.find(x => x.number == id);
+      dialogConfig.data = {
+        buildingId: this.currentBuildingId,
+        existingApartmentId: apartment.id,
+        dialogType: 0
+      };
+    } else {
+      dialogConfig.data = {
+        buildingId: this.currentBuildingId,
+        dialogType: 1
+      };
     }
-
-    dialogConfig.data = {
-      buildingId: this.currentBuildingId,
-      existingApartmentId: apartment.id
-    };
     const buildingDialogRef = this.dialog.open(AddApartmentComponent, dialogConfig);
     buildingDialogRef.afterClosed().subscribe(
       data => {
       }
     );
   }
+
+  changeBuildingFloor(floor: string) {
+    this.curentFloor = floor;
+  }
+
+
 }

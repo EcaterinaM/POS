@@ -6,7 +6,8 @@
       <div class="ruler">
         <div *ngFor="let floor of floors"
              class="ruler-element"
-             [class.selected]="floor == curentFloor">
+             [class.selected]="floor == curentFloor"
+             (click)="changeBuildingFloor(floor)">
           <h4>{{floor}} floor</h4>
         </div>
       </div>

@@ -3,7 +3,6 @@ export class Tenant {
   surname: string;
   email: string;
   phonenumber: string;
-
   password: string;
   confirmPassword: string;
 }
