@@ -59,7 +59,7 @@ export class HumidityComponent implements OnInit {
       this.chartOptions.title.display = true;
       this.chart = new Chart(['#eea50a'],
         [new ChartDatasetModel(sensorData.dataList, 'Humidity', '#eea50a')],
-        sensorData.dates.map(d => d.toString().replace('T', ' ')),
+        sensorData.dates.map(d => d.toString().replace('T', ' ').split('.')[0]),
         ChartTypeConstants.lineChart,
         'Humidity',
         false);
@@ -71,7 +71,7 @@ export class HumidityComponent implements OnInit {
 
       var minDate = sensorData.dates[minPosition];
       var maxDate = sensorData.dates[maxPosition];
-      this.property = new Property(max.toString(), maxDate.toString().replace('T', ' '), min.toString(), minDate.toString().replace('T', ' '));
+      this.property = new Property(max.toString(), maxDate.toString().replace('T', ' ').split('.')[0], min.toString(), minDate.toString().replace('T', ' ').split('.')[0]);
     }
     );
   }
