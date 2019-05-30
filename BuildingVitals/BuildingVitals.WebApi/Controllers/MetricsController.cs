@@ -29,5 +29,11 @@ namespace BuildingVitals.WebApi.Controllers
         {
             return Ok(_metricService.GetSensorData(sensorId, propertyName));
         }
+
+        [HttpGet("property/{propertyName}/{sensorId}")]
+        public IActionResult GetMaxAndMin(string property, Guid sensorId)
+        {
+            return Ok(_metricService.GetMaxAndMinValues(property, sensorId));
+        }
     }
 }

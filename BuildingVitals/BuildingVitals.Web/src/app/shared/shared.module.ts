@@ -10,7 +10,8 @@ import {
   AdminNotAuthenticateGuard, TenantNotAuthenticateGuard,
   BaseService,
   RegisterService,
-  UserService
+  UserService,
+  MetricService
 } from './services';
 import { AuthenticationInterceptor } from './interceptors';
 
@@ -41,6 +42,7 @@ import { AuthenticationInterceptor } from './interceptors';
     JwtOptionsService,
     LocalStorageService,
     LoaderService,
+    MetricService,
 
     AdminNotAuthenticateGuard,
     TenantNotAuthenticateGuard,
