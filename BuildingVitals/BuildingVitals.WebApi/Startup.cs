@@ -123,8 +123,8 @@ namespace BuildingVitals.WebApi
             app.UseMvc();
 
             //app.UseMiddleware<SensorJobMiddleware>();
-            var cronSection = "2 * * * *";
-            RecurringJob.AddOrUpdate<ISensorJob>(x => x.AddSensorData(), cronSection);
+            //var cronSection = "2 * * * *";
+            RecurringJob.AddOrUpdate<ISensorJob>(x => x.AddSensorData(), Cron.Minutely);
         }
     }
 }

@@ -52,19 +52,19 @@ export class TemperatureComponent {
       this.chartOptions.scales.yAxes.push(new YAxisModel());
       this.chart = new Chart(['#1B73A6'],
         [new ChartDatasetModel(sensorData.dataList, 'Temperature', '#1B73A6')],
-        sensorData.dates.map(d => d.toString().replace('T', ' ')),
+        sensorData.dates.map(d => d.toString().replace('T', ' ').split('.')[0]),
         ChartTypeConstants.lineChart,
         'Temperature',
         false);
-        var max = sensorData.dataList.reduce((a, b) => Math.max(a, b));
-        var min = sensorData.dataList.reduce((a, b) => Math.min(a, b));
-        var maxPosition = sensorData.dataList.indexOf(max);
-        var minPosition = sensorData.dataList.indexOf(min);
-  
-        var minDate = sensorData.dates[minPosition];
-        var maxDate = sensorData.dates[maxPosition];
-        this.property = new Property(max.toString(), maxDate.toString().replace('T', ' '), min.toString(), minDate.toString().replace('T', ' '));
-      
+      var max = sensorData.dataList.reduce((a, b) => Math.max(a, b));
+      var min = sensorData.dataList.reduce((a, b) => Math.min(a, b));
+      var maxPosition = sensorData.dataList.indexOf(max);
+      var minPosition = sensorData.dataList.indexOf(min);
+
+      var minDate = sensorData.dates[minPosition];
+      var maxDate = sensorData.dates[maxPosition];
+      this.property = new Property(max.toString(), maxDate.toString().replace('T', ' '), min.toString(), minDate.toString().replace('T', ' '));
+
     }
     );
   }
