@@ -1,35 +1,34 @@
 import { Component, OnInit } from '@angular/core';
-import { JwtHelperService } from '@auth0/angular-jwt';
-
 import { Chart, ChartDatasetModel, ChartOptionsModel, LineChartColorModel, YAxisModel } from '../../../shared/components/chart/models';
 import { ChartTypeConstants, ChartStyleConstants } from '../../../shared/components/chart/constants';
-
+import { MetricService } from '../../../shared/services/model-services/metric.service';
+import { Property } from '../../../shared/models/property.model';
 import { SensorDataService, UserService } from '../../../shared'
 import { AuthenticationHelper } from '../../../shared';
 import { SensorDataList } from '../../../shared'
-import { UserModel } from 'src/app/shared/models/user.model';
 import { interval, Subscription } from 'rxjs';
-import { Property } from '../../../shared/models/property.model';
+import { JwtHelperService } from '@auth0/angular-jwt';
+import { UserModel } from '../../../shared/models/user.model';
 
 @Component({
-  selector: 'app-temperature',
-  templateUrl: './temperature.component.html',
-  styleUrls: ['./temperature.component.scss']
+  selector: 'app-humidity',
+  templateUrl: './humidity.component.html',
+  styleUrls: ['./humidity.component.scss']
 })
-export class TemperatureComponent {
+export class HumidityComponent implements OnInit {
   chart: Chart;
   chartOptions: ChartOptionsModel;
-  chartData: SensorDataList;
-  username: string;
   user: UserModel;
-
+  username: string;
   subscription: Subscription;
+
   property: Property;
 
   constructor(private sensorDataService: SensorDataService,
     private jwtHelperService: JwtHelperService,
     private authHelper: AuthenticationHelper,
-    private userService: UserService) {
+    private userService: UserService,
+    private metricService: MetricService) {
   }
 
   ngOnInit(): void {
@@ -46,30 +45,26 @@ export class TemperatureComponent {
   }
 
   private buildChart() {
-    this.sensorDataService.getSensorData('Temperature', this.user.sensorId).subscribe((sensorData: SensorDataList) => {
+    this.sensorDataService.getSensorData('Humidity', this.user.sensorId).subscribe((sensorData: SensorDataList) => {
       this.chartOptions = new ChartOptionsModel();
       this.chartOptions.title.display = true;
       this.chartOptions.scales.yAxes.push(new YAxisModel());
-      this.chart = new Chart(['#1B73A6'],
-        [new ChartDatasetModel(sensorData.dataList, 'Temperature', '#1B73A6')],
+      this.chart = new Chart(['#eea50a'],
+        [new ChartDatasetModel(sensorData.dataList, 'Humidity', '#eea50a')],
         sensorData.dates.map(d => d.toString().replace('T', ' ')),
         ChartTypeConstants.lineChart,
-        'Temperature',
+        'Humidity',
         false);
-        var max = sensorData.dataList.reduce((a, b) => Math.max(a, b));
-        var min = sensorData.dataList.reduce((a, b) => Math.min(a, b));
-        var maxPosition = sensorData.dataList.indexOf(max);
-        var minPosition = sensorData.dataList.indexOf(min);
-  
-        var minDate = sensorData.dates[minPosition];
-        var maxDate = sensorData.dates[maxPosition];
-        this.property = new Property(max.toString(), maxDate.toString().replace('T', ' '), min.toString(), minDate.toString().replace('T', ' '));
-      
+
+      var max = sensorData.dataList.reduce((a, b) => Math.max(a, b));
+      var min = sensorData.dataList.reduce((a, b) => Math.min(a, b));
+      var maxPosition = sensorData.dataList.indexOf(max);
+      var minPosition = sensorData.dataList.indexOf(min);
+
+      var minDate = sensorData.dates[minPosition];
+      var maxDate = sensorData.dates[maxPosition];
+      this.property = new Property(max.toString(), maxDate.toString().replace('T', ' '), min.toString(), minDate.toString().replace('T', ' '));
     }
     );
-  }
-
-  ngOnDestroy() {
-    this.subscription.unsubscribe();
   }
 }

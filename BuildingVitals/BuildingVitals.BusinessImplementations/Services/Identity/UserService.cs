@@ -20,6 +20,7 @@ namespace BuildingVitals.BusinessImplementations.Services.Identity
         private readonly IMapper _serviceMapper;
         private readonly IApartmentService _apartmentService;
         private readonly IUserRepository _userRepository;
+        private readonly ISensorService _sensorService;
 
         private readonly IMailService _mailService;
 
@@ -27,7 +28,8 @@ namespace BuildingVitals.BusinessImplementations.Services.Identity
             RoleManager<IdentityRole<Guid>> roleManager, 
             IMapper serviceMapper,
             IApartmentService apartmentService,
-            IUserRepository userRepository, 
+            IUserRepository userRepository,
+            ISensorService sensorService,
             IMailService mailService)
         {
             _userManager = userManager;
@@ -35,6 +37,7 @@ namespace BuildingVitals.BusinessImplementations.Services.Identity
             _serviceMapper = serviceMapper;
             _apartmentService = apartmentService;
             _userRepository = userRepository;
+            _sensorService = sensorService;
             _mailService = mailService;
         }
 
@@ -132,6 +135,8 @@ namespace BuildingVitals.BusinessImplementations.Services.Identity
 
             var userModel = _serviceMapper.Map<UserIdentityModel>(user);
             userModel.Roles = await _userManager.GetRolesAsync(user);
+            var apartmentId = _apartmentService.GetApartmentByOwnerId(userModel.Id).Id;
+            userModel.SensorId = _sensorService.GetByApartmentId(apartmentId).Id;
             return userModel;
         }
     }

@@ -4,7 +4,8 @@ import { Routes, RouterModule } from '@angular/router';
 import { AuthenticationGuard } from './shared';
 
 import { DashboardComponent } from './dashboard';
-import { TemperatureComponent } from './sensors';
+import { TemperatureComponent, HumidityComponent } from './sensors';
+
 
 const routes: Routes = [
   {
@@ -16,6 +17,12 @@ const routes: Routes = [
   {
     path: 'temperature',
     component: TemperatureComponent,
+    canActivate: [AuthenticationGuard],
+    pathMatch: 'full'
+  },
+  {
+    path: 'humidity',
+    component: HumidityComponent,
     canActivate: [AuthenticationGuard],
     pathMatch: 'full'
   },
