@@ -30,5 +30,11 @@ namespace BuildingVitals.WebApi.Controllers
         {
             return Ok(_buildingService.GetBuildingsByOwnerId(ownerId));
         }
+
+        [HttpGet("building/{id}")]
+        public IActionResult GetBuildingById(Guid id)
+        {
+            return Ok(_buildingService.GetById(id));
+        }
     }
 }
