@@ -20,7 +20,12 @@ export class BuildingService extends BaseService {
     return this.httpClient.post<Building>
       (`${this.baseServiceUrl}`, building, this.serviceHelper.getHttpHeaders());
   }
+
   getAllBuildings(ownerId: string): Observable<Building[]> {
-    return this.httpClient.get<Building[]>(`${this.baseServiceUrl}/${ownerId}`,  this.serviceHelper.getHttpHeaders())
+    return this.httpClient.get<Building[]>(`${this.baseServiceUrl}/${ownerId}`, this.serviceHelper.getHttpHeaders());
   }
+
+  /*getBuildingById(buildingId: string): Observable<Building> {
+    return this.httpClient.get<Building>(`${this.baseServiceUrl}/${ownerId}`, this.serviceHelper.getHttpHeaders());
+  }*/
 }

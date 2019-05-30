@@ -1,9 +1,9 @@
-import { Component, OnInit, Input } from '@angular/core';
+import { Component, OnInit, Input, Inject } from '@angular/core';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
-import { MatDialogRef } from '@angular/material';
-import { AddApartment } from '../shared/models';
+import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material';
 import { ActivatedRoute } from '@angular/router';
 import { ApartmentService } from '../shared';
+import { Apartment } from '../shared/models/_apartment';
 
 @Component({
   selector: 'app-add-apartment',
@@ -12,28 +12,45 @@ import { ApartmentService } from '../shared';
 })
 export class AddApartmentComponent implements OnInit {
   apartmentForm: FormGroup;
-  apartment: AddApartment;
+  apartment: Apartment;
   currentBuildingId: string;
-
-  constructor(private activeRoute: ActivatedRoute,
+  existingApartmentId: string;
+  dialogType: number = 0;
+  constructor(@Inject(MAT_DIALOG_DATA) data,
+    private activeRoute: ActivatedRoute,
     private formBuilder: FormBuilder,
     private dialogRef: MatDialogRef<AddApartmentComponent>,
-    private apartmentService: ApartmentService) { }
+    private apartmentService: ApartmentService) {
+    this.dialogType = data.dialogType;
+    this.currentBuildingId = data.buildingId;
+    if (this.dialogType == 0) {
+      this.existingApartmentId = data.existingApartmentId;
+    }
+  }
 
   ngOnInit() {
-    this.activeRoute.params.subscribe(params => {
-        if(params['id']) {
-           this.currentBuildingId = params['id'];
+    if (this.dialogType == 0) {
+      this.apartmentService.getApartmentById(this.existingApartmentId).subscribe(
+        (data) => {
+          this.apartment = data;
+          this.configureApartmentForm();
         }
-    })
-    this.apartment = new AddApartment();
+      );
+    } else {
+      this.apartment = new Apartment();
+      this.configureApartmentForm();
+    }
+  
+  }
+
+  configureApartmentForm() {
     this.apartmentForm = this.formBuilder.group({
-      'name': [this.apartment.name, Validators.required],
-      'surname': [this.apartment.surname, Validators.required],
-      'userName': [this.apartment.userName, Validators.required],
-      'email': [this.apartment.email, Validators.required],
-      'password': [this.apartment.password, Validators.required],
-      'phoneNumber': [this.apartment.phoneNumber, Validators.required],
+      'name': [this.apartment.owner.name, Validators.required],
+      'surname': [this.apartment.owner.surname, Validators.required],
+      'userName': [this.apartment.owner.name, Validators.required],
+      'email': [this.apartment.owner.email, Validators.required],
+      'password': [this.apartment.owner.password, Validators.required],
+      'phoneNumber': [this.apartment.owner.phonenumber, Validators.required],
       'floor': [this.apartment.floor, Validators.required],
       'number': [this.apartment.number, Validators.required],
       'buildingId': [this.apartment.buildingId],

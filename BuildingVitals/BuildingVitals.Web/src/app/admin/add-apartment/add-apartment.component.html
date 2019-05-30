@@ -35,7 +35,7 @@
             Owner email is required.
         </mat-error>
       </mat-form-field>
-      <mat-form-field class="full-width" [style.margin-bottom.px]="20">
+      <mat-form-field class="full-width" [style.margin-bottom.px]="20" *ngIf="dialogType == 1">
         <input matInput
                type="password"
                placeholder="Owner password"
@@ -79,4 +79,3 @@
       <h6>Save</h6>
     </button>
   </div>
-  

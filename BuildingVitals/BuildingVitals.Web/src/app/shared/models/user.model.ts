@@ -1,8 +1,9 @@
-export class Tenant {
+export class UserModel {
   name: string;
   surname: string;
+  username: string;
   email: string;
-  phonenumber: string;
   password: string;
   confirmPassword: string;
+  phoneNumber: string;
 }

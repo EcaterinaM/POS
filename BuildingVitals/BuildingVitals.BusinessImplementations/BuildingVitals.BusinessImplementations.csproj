@@ -11,6 +11,7 @@
   <ItemGroup>
     <ProjectReference Include="..\BuildingVitals.Business\BuildingVitals.BusinessContracts.csproj" />
     <ProjectReference Include="..\BuildingVitals.Common\BuildingVitals.Common.csproj" />
+    <ProjectReference Include="..\BuildingVitals.DataAccessImplementations\BuildingVitals.DataAccessImplementations.csproj" />
     <ProjectReference Include="..\BuildingVitals.DataAccess\BuildingVitals.DataAccessContracts.csproj" />
   </ItemGroup>
 
