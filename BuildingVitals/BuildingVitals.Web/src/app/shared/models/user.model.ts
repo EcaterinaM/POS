@@ -6,4 +6,5 @@ export class UserModel {
   password: string;
   confirmPassword: string;
   phoneNumber: string;
+  sensorId: string;
 }

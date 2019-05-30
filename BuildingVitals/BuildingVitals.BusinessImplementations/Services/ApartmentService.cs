@@ -25,7 +25,7 @@ namespace BuildingVitals.BusinessImplementations.Services
 
         public ApartmentModel GetApartmentByOwnerId(Guid ownerId)
         {
-            var apartment = Repository.GetById(ownerId);
+            var apartment = Repository.Filter(a => a.OwnerId == ownerId).FirstOrDefault();
             return ServiceMapper.Map<ApartmentModel>(apartment);
         }
 

@@ -11,8 +11,6 @@ namespace BuildingVitals.DataAccessImplementations.Context
 {
     public class AppDbContext : IdentityDbContext<User, IdentityRole<Guid>, Guid>
     {
-        private DbSet<Sensor> Sensors { get; set; }
-
         public AppDbContext(DbContextOptions<AppDbContext> options)
             : base(options)
         {

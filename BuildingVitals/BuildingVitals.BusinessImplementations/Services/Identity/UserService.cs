@@ -19,18 +19,21 @@ namespace BuildingVitals.BusinessImplementations.Services.Identity
         private readonly IMapper _serviceMapper;
         private readonly IApartmentService _apartmentService;
         private readonly IUserRepository _userRepository;
+        private readonly ISensorService _sensorService;
 
         public UserService(UserManager<User> userManager, 
             RoleManager<IdentityRole<Guid>> roleManager, 
             IMapper serviceMapper,
             IApartmentService apartmentService,
-            IUserRepository userRepository)
+            IUserRepository userRepository,
+            ISensorService sensorService)
         {
             _userManager = userManager;
             _roleManager = roleManager;
             _serviceMapper = serviceMapper;
             _apartmentService = apartmentService;
             _userRepository = userRepository;
+            _sensorService = sensorService;
         }
 
         public async Task<UserIdentityModel> FindByName(string userName)
@@ -125,6 +128,8 @@ namespace BuildingVitals.BusinessImplementations.Services.Identity
 
             var userModel = _serviceMapper.Map<UserIdentityModel>(user);
             userModel.Roles = await _userManager.GetRolesAsync(user);
+            var apartmentId = _apartmentService.GetApartmentByOwnerId(userModel.Id).Id;
+            userModel.SensorId = _sensorService.GetByApartmentId(apartmentId).Id;
             return userModel;
         }
     }

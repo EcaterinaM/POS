@@ -11,6 +11,7 @@ import {
   BaseService,
   RegisterService,
   UserService,
+  SensorDataService,
   MetricService
 } from './services';
 import { AuthenticationInterceptor } from './interceptors';
@@ -35,6 +36,7 @@ import { AuthenticationInterceptor } from './interceptors';
 
     RegisterService,
     UserService,
+    SensorDataService,
 
     BaseService,
 
