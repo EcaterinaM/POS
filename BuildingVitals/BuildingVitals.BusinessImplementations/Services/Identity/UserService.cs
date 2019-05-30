@@ -5,6 +5,7 @@ using BuildingVitals.BusinessContracts.Models;
 using BuildingVitals.BusinessContracts.Models.Identity;
 using BuildingVitals.BusinessContracts.Services;
 using BuildingVitals.BusinessContracts.Services.Identity;
+using BuildingVitals.BusinessImplementations.Mail;
 using BuildingVitals.Common.Constants;
 using BuildingVitals.DataAccessContracts.Entities.Identity;
 using BuildingVitals.DataAccessContracts.Repositories;
@@ -20,17 +21,21 @@ namespace BuildingVitals.BusinessImplementations.Services.Identity
         private readonly IApartmentService _apartmentService;
         private readonly IUserRepository _userRepository;
 
+        private readonly IMailService _mailService;
+
         public UserService(UserManager<User> userManager, 
             RoleManager<IdentityRole<Guid>> roleManager, 
             IMapper serviceMapper,
             IApartmentService apartmentService,
-            IUserRepository userRepository)
+            IUserRepository userRepository, 
+            IMailService mailService)
         {
             _userManager = userManager;
             _roleManager = roleManager;
             _serviceMapper = serviceMapper;
             _apartmentService = apartmentService;
             _userRepository = userRepository;
+            _mailService = mailService;
         }
 
         public async Task<UserIdentityModel> FindByName(string userName)
@@ -77,6 +82,8 @@ namespace BuildingVitals.BusinessImplementations.Services.Identity
 
             var apartment = new ApartmentModel(userWithApartmentModel, addedUserId);
             _apartmentService.AddApartment(apartment);
+
+            _mailService.NewTenantAdded(userModel);
         }
 
         public async Task<UserModel> EditUser(EditUserModel editUser, string username)
