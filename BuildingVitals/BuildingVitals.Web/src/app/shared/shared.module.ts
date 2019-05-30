@@ -11,7 +11,8 @@ import {
   BaseService,
   RegisterService,
   UserService,
-  SensorDataService
+  SensorDataService,
+  MetricService
 } from './services';
 import { AuthenticationInterceptor } from './interceptors';
 
@@ -43,6 +44,7 @@ import { AuthenticationInterceptor } from './interceptors';
     JwtOptionsService,
     LocalStorageService,
     LoaderService,
+    MetricService,
 
     AdminNotAuthenticateGuard,
     TenantNotAuthenticateGuard,

@@ -13,6 +13,8 @@ namespace BuildingVitals.BusinessContracts.Services
         void AddMetric(MetricModel metricModel);
 
         SensorDataListModel GetSensorData(Guid sensorId, string property);
+
+        PropertyMinMax GetMaxAndMinValues(string property, Guid sensorId);
     }
 }
     

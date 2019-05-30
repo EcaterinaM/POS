@@ -9,11 +9,13 @@ import { AuthenticationGuard } from './shared';
 
 import { DashboardComponent } from './dashboard';
 import { TemperatureComponent } from './sensors';
+import { HumidityComponent } from './sensors';
 
 @NgModule({
   declarations: [
     DashboardComponent,
-    TemperatureComponent
+    TemperatureComponent,
+    HumidityComponent
   ],
   imports: [
     CommonModule,

@@ -1,0 +1,53 @@
+<div class="main-container">
+  <h1>Humidity sensor</h1>
+
+  <div class="flex-row-start full-width custom-height">
+    <section class="flex-column-start">
+      <div class="general-card ">
+        <app-chart *ngIf="chart.chartData && chart.chartLabels.length > 0" [colors]="chart.colors" [data]="chart.chartData"
+                   [labels]="chart.chartLabels" [legend]="chart.showChartLegend" [title]="chart.chartTitle" [type]="chart.chartType"
+                   [options]="chartOptions">
+        </app-chart>
+      </div>
+      <div class="general-card padding-12-32"
+           *ngIf="property">
+        <div class="flex-row-start">
+          <div class="flex-column-start" [style.flex]="1">
+            <h3>Min humidity</h3>
+            <h1>{{property.minValue}}%</h1>
+          </div>
+          <div>
+            <h3>From Date</h3>
+            <h1>{{property.minValueDate}}</h1>
+          </div>
+        </div>
+
+      </div>
+      <div class="general-card padding-12-32"
+           *ngIf="property">
+        <div class="flex-row-start">
+          <div class="flex-column-start" [style.flex]="1">
+            <h3>Max humidity</h3>
+            <h1>{{property.maxValue}}%</h1>
+          </div>
+          <div>
+            <h3>From Date</h3>
+            <h1>{{property.maxValueDate}}</h1>
+          </div>
+        </div>
+      </div>
+
+    </section>
+
+    <section class="flex-column-start">
+      <div class="cover-image"></div>
+      <div class="general-card full-height padding-20">
+        <h3 [style.margin-bottom.px]="40">Ideal humidity</h3>
+        <h4>What should the humidity be in my house ?</h4>
+        <p [style.margin-bottom.px]="40">
+          During summer months, the average humidity should weigh in between 30-45 percent (below the 50% mark). Winter may require lower than 40% relative humidity to avoid condensation on your windows. By staying in the proper ranges, problems can be prevented.
+        </p>
+      </div>
+    </section>
+  </div>
+</div>
