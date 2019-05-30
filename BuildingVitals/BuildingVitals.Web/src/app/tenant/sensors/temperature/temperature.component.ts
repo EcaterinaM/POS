@@ -24,6 +24,7 @@ export class TemperatureComponent {
   user: UserModel;
 
   subscription: Subscription;
+  property: Property;
 
   constructor(private sensorDataService: SensorDataService,
     private jwtHelperService: JwtHelperService,
@@ -49,8 +50,8 @@ export class TemperatureComponent {
       this.chartOptions = new ChartOptionsModel();
       this.chartOptions.title.display = true;
       this.chartOptions.scales.yAxes.push(new YAxisModel());
-      this.chart = new Chart([],
-        [new ChartDatasetModel(sensorData.dataList, 'Temperature')],
+      this.chart = new Chart(['#1B73A6'],
+        [new ChartDatasetModel(sensorData.dataList, 'Temperature', '#1B73A6')],
         sensorData.dates.map(d => d.toString().replace('T', ' ')),
         ChartTypeConstants.lineChart,
         'Temperature',

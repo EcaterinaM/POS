@@ -49,8 +49,8 @@ export class HumidityComponent implements OnInit {
       this.chartOptions = new ChartOptionsModel();
       this.chartOptions.title.display = true;
       this.chartOptions.scales.yAxes.push(new YAxisModel());
-      this.chart = new Chart([],
-        [new ChartDatasetModel(sensorData.dataList, 'Humidity')],
+      this.chart = new Chart(['#eea50a'],
+        [new ChartDatasetModel(sensorData.dataList, 'Humidity', '#eea50a')],
         sensorData.dates.map(d => d.toString().replace('T', ' ')),
         ChartTypeConstants.lineChart,
         'Humidity',
