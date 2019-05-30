@@ -35,6 +35,7 @@ import { AuthenticationInterceptor } from './interceptors';
 
     RegisterService,
     UserService,
+    SensorDataService,
 
     BaseService,
 
@@ -42,7 +43,6 @@ import { AuthenticationInterceptor } from './interceptors';
     JwtOptionsService,
     LocalStorageService,
     LoaderService,
-    SensorDataService,
 
     AdminNotAuthenticateGuard,
     TenantNotAuthenticateGuard,
