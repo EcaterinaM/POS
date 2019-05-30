@@ -63,7 +63,7 @@ export class TemperatureComponent {
 
       var minDate = sensorData.dates[minPosition];
       var maxDate = sensorData.dates[maxPosition];
-      this.property = new Property(max.toString(), maxDate.toString().replace('T', ' '), min.toString(), minDate.toString().replace('T', ' '));
+      this.property = new Property(max.toString(), maxDate.toString().replace('T', ' ').split('.')[0], min.toString(), minDate.toString().replace('T', ' ').split('.')[0]);
 
     }
     );
