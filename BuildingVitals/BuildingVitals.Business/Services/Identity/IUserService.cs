@@ -26,6 +26,13 @@ namespace BuildingVitals.BusinessContracts.Services.Identity
         Task<UserIdentityModel> Find(string username, string password);
 
         /// <summary>
+        /// Finds the user with details.
+        /// </summary>
+        /// <param name="userName">Name of the user.</param>
+        /// <returns></returns>
+        Task<UserIdentityModel> FindUserWithDetails(string userName);
+
+        /// <summary>
         /// Adds the refresh token for a user.
         /// </summary>
         /// <param name="userName">Name of the user.</param>

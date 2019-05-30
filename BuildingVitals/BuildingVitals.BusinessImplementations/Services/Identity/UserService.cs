@@ -43,7 +43,7 @@ namespace BuildingVitals.BusinessImplementations.Services.Identity
 
         public async Task<UserIdentityModel> FindByName(string userName)
         {
-            return await FindUser(userName);
+            return await FindUserWithDetails(userName);
         }
 
         public async Task<UserIdentityModel> Find(string userName, string password)
@@ -131,6 +131,17 @@ namespace BuildingVitals.BusinessImplementations.Services.Identity
         {
             var user = await _userManager.FindByNameAsync(userName);
             if (user == null || (password != null && !await _userManager.CheckPasswordAsync(user, password)))
+                return null;
+
+            var userModel = _serviceMapper.Map<UserIdentityModel>(user);
+            userModel.Roles = await _userManager.GetRolesAsync(user);
+            return userModel;
+        }
+
+        public async Task<UserIdentityModel> FindUserWithDetails(string userName)
+        {
+            var user = await _userManager.FindByNameAsync(userName);
+            if (user == null )
                 return null;
 
             var userModel = _serviceMapper.Map<UserIdentityModel>(user);
