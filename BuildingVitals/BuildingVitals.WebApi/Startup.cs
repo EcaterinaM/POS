@@ -1,8 +1,13 @@
-﻿using System.Threading.Tasks;
+﻿using System;
+using System.Threading.Tasks;
 using BuildingVitals.Bootstrap.AutoMapper;
 using BuildingVitals.Bootstrap.DependencyInjection;
+using BuildingVitals.BusinessContracts.SensorJob;
 using BuildingVitals.WebApi.Configurations;
 using BuildingVitals.WebApi.Helpers.Tokens;
+using BuildingVitals.WebApi.Middlewares;
+using Hangfire;
+using Hangfire.SqlServer;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
@@ -61,6 +66,22 @@ namespace BuildingVitals.WebApi
             {
                 c.SwaggerDoc("v1", new Info { Title = "My API", Version = "v1" });
             });
+
+            services.AddHangfire(configuration => configuration
+                .SetDataCompatibilityLevel(CompatibilityLevel.Version_170)
+                .UseSimpleAssemblyNameTypeSerializer()
+                .UseRecommendedSerializerSettings()
+                .UseSqlServerStorage(Configuration.GetConnectionString("BuildingVitals"), new SqlServerStorageOptions
+                {
+                    CommandBatchMaxTimeout = TimeSpan.FromMinutes(5),
+                    SlidingInvisibilityTimeout = TimeSpan.FromMinutes(5),
+                    QueuePollInterval = TimeSpan.Zero,
+                    UseRecommendedIsolationLevel = true,
+                    UsePageLocksOnDequeue = true,
+                    DisableGlobalLocks = true
+                }));
+
+            services.AddHangfireServer();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -74,6 +95,8 @@ namespace BuildingVitals.WebApi
             {
                 app.UseHsts();
             }
+
+            app.UseHangfireDashboard();
 
             app.Use(async (ctx, next) => { await next(); if (ctx.Response.StatusCode == 204) { ctx.Response.ContentLength = 0; } });
 
@@ -98,6 +121,10 @@ namespace BuildingVitals.WebApi
 
             app.UseSession();
             app.UseMvc();
+
+            //app.UseMiddleware<SensorJobMiddleware>();
+            var cronSection = "2 * * * *";
+            RecurringJob.AddOrUpdate<ISensorJob>(x => x.AddSensorData(), cronSection);
         }
     }
 }

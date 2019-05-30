@@ -30,5 +30,11 @@ namespace BuildingVitals.WebApi.Controllers
         {
             return Ok();
         }
+
+        [HttpGet()]
+        public IActionResult GetAllSensors()
+        {
+            return Ok(_sensorService.GetAll());
+        }
     }
 }
