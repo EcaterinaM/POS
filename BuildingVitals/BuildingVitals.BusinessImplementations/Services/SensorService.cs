@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Linq;
 using AutoMapper;
 using BuildingVitals.BusinessContracts.Models;
 using BuildingVitals.BusinessContracts.Services;
@@ -17,6 +18,11 @@ namespace BuildingVitals.BusinessImplementations.Services
         public Guid AddSensorToApartment(SensorModel sensorModel)
         {
             return base.Add(sensorModel);
+        }
+
+        public SensorModel GetByApartmentId(Guid id)
+        {
+            return ServiceMapper.Map<SensorModel>(Repository.Filter(s => s.ApartmentId == id).FirstOrDefault());
         }
     }
 }

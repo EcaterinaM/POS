@@ -2,8 +2,8 @@ import { BaseService, ServiceHelper } from 'src/app/shared';
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { environment } from 'src/environments/environment';
-import { SensorDataList } from '../../models';
 import { Observable } from 'rxjs';
+import { SensorDataList } from '../../models';
 
 @Injectable({
   providedIn: 'root'
