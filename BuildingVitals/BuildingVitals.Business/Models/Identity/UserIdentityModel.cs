@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using BuildingVitals.BusinessContracts.Models.Base;
 
 namespace BuildingVitals.BusinessContracts.Models.Identity
@@ -14,6 +15,8 @@ namespace BuildingVitals.BusinessContracts.Models.Identity
         public string Email { get; set; }
 
         public string PhoneNumber { get; set; }
+
+        public Guid SensorId { get; set; }
 
         public IList<string> Roles { get; set; }
     }
