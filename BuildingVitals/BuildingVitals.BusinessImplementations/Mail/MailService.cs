@@ -27,8 +27,7 @@ namespace BuildingVitals.BusinessImplementations.Mail
                 Port = 587,
                 EnableSsl = true,
                 DeliveryMethod = SmtpDeliveryMethod.Network,
-                UseDefaultCredentials = false,
-                Credentials = new NetworkCredential("anteagroup.centric@gmail.com", "centricantea")
+                UseDefaultCredentials = false
             };
             using (var message = new MailMessage(fromAddress, toAddress)
             {
